@@ -1,3 +1,4 @@
+import 'package:beonchat_admin/const/screen_size.dart';
 import 'package:beonchat_admin/screen/onboarding/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,18 +13,22 @@ class SplashResponsive extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return ScreenUtilInit(
-        designSize: w <= 480 ? const Size(375, 812) : w<= 900 ?  const Size(768, 1024) :  const Size(1920, 1080),
+        designSize: w < mobileSize
+            ? const Size(375, 812)
+            : w < tabSize
+                ? const Size(768, 1024)
+                : const Size(1920, 1080),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
           return ScreenTypeLayout(
-            mobile:  const Splash(
+            mobile: const Splash(
               type: 1,
             ),
-            tablet:  const Splash(
+            tablet: const Splash(
               type: 2,
             ),
-            desktop:  const Splash(
+            desktop: const Splash(
               type: 3,
             ),
           );

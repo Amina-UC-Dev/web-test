@@ -1,4 +1,5 @@
 import 'package:beonchat_admin/const/colors.dart';
+import 'package:beonchat_admin/screen/dashboard/widget/dashboard_body.dart';
 import 'package:beonchat_admin/screen/dashboard/widget/drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class DashBoard extends StatelessWidget {
         title: Text(
             "H O M E    ${type == 1 ? "M O B I L E" : type == 2 ? "T A B L E T" : "D E S K T O P"}"),
         centerTitle: true,
+        automaticallyImplyLeading: type != 3,
       ),
       drawer: type != 3
           ? HomeDrawer(
@@ -23,12 +25,16 @@ class DashBoard extends StatelessWidget {
           : null,
       body: Row(
         children: [
-         type == 3 ? HomeDrawer(
-            type: type,
-          ) : Container(width: 0,),
+          type == 3
+              ? HomeDrawer(
+                  type: type,
+                )
+              : Container(
+                  width: 0,
+                ),
           Expanded(
-            child: Container(
-              color: Colours().grey2,
+            child: DashBoardBody(
+              type: type,
             ),
           ),
         ],
