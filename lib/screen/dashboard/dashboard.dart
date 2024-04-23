@@ -15,9 +15,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DashBoard extends StatelessWidget {
-  const DashBoard({Key? key}) : super(key: key);
+  const DashBoard({Key? key, required this.type}) : super(key: key);
 
-  static String routeName = "/dashboard";
+  final int type;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +42,24 @@ class DashBoard extends StatelessWidget {
               MySpacing.height(flexSpacing),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: flexSpacing / 2),
+                child: GridView.count(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisCount: type == 3 ? 5 : type,
+                  childAspectRatio: 1.3,
+                  children: [0, 0, 0, 0, 0].map((e) {
+                    return buildCard(
+                        Colours().primary,
+                        Icons.margin,
+                        "Engaged",
+                        "\$50",
+                        Icons.trending_up,
+                        Colours().red,
+                        "2.5",
+                        "Last Week",
+                        themePro.darkTheme);
+                  }).toList(),
+                ),
               ),
             ],
           ),

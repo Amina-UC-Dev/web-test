@@ -2,7 +2,7 @@ import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/provider/main/main_provider.dart';
 import 'package:beonchat_admin/provider/onboarding/login_provider.dart';
-import 'package:beonchat_admin/screen/dashboard/dashboard.dart';
+import 'package:beonchat_admin/screen/dashboard/dashboard_responsive.dart';
 import 'package:beonchat_admin/widget/button/button.dart';
 import 'package:beonchat_admin/widget/textfield/textfield.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
@@ -62,7 +62,7 @@ class LoginForm extends StatelessWidget {
             callB: () {
               Provider.of<MainProvider>(context,listen: false).init();
               Navigator.pushNamedAndRemoveUntil(
-                  context, DashBoard.routeName, (route) => false);
+                  context, DashBoardResponsive.routeName, (route) => false);
             },
             title: "login",
             bottomPadding: 0,

@@ -46,6 +46,7 @@ dependencies:
   flutter_svg:
   url_strategy:
   google_fonts:
+  responsive_grid_list:
 
 dev_dependencies:
   flutter_test:
