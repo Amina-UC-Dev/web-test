@@ -1,11 +1,12 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
+import 'package:beonchat_admin/provider/main/main_provider.dart';
 import 'package:beonchat_admin/provider/onboarding/login_provider.dart';
-import 'package:beonchat_admin/screen/dashboard/dashboard_responsive.dart';
+import 'package:beonchat_admin/screen/dashboard/dashboard.dart';
 import 'package:beonchat_admin/widget/button/button.dart';
 import 'package:beonchat_admin/widget/textfield/textfield.dart';
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class LoginForm extends StatelessWidget {
@@ -27,9 +28,7 @@ class LoginForm extends StatelessWidget {
               size: type == 3 ? 25 : 20,
             ),
           ),
-          SizedBox(
-            height: (type == 1 ? 30 : 50).sp,
-          ),
+          MySpacing.height(type == 1 ? 30 : 50),
           TextFieldWidget().hintTextField(
             controller: provider.email,
             type: type,
@@ -43,9 +42,7 @@ class LoginForm extends StatelessWidget {
             onSubmit: (val) {},
             textColor: Colours().white,
           ),
-          SizedBox(
-            height: (type == 1 ? 10 : 15).sp,
-          ),
+          MySpacing.height(type == 1 ? 10 : 15),
           TextFieldWidget().hintTextField(
             controller: provider.password,
             type: type,
@@ -59,16 +56,13 @@ class LoginForm extends StatelessWidget {
             onSubmit: (val) {},
             textColor: Colours().white,
           ),
-          SizedBox(
-            height: (type == 1 ? 50 : 70).sp,
-          ),
+          MySpacing.height(type == 1 ? 50 : 70),
           SingleAlertButton(
             type: type,
             callB: () {
+              Provider.of<MainProvider>(context,listen: false).init();
               Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  DashBoardResponsive.routeName,
-                      (route) => false);
+                  context, DashBoard.routeName, (route) => false);
             },
             title: "login",
             bottomPadding: 0,

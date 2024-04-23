@@ -37,12 +37,15 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider:
   logger:
+  shared_preferences:
   flutter_screenutil:
   video_player:
   responsive_builder:
   get:
   get_storage:
   flutter_svg:
+  url_strategy:
+  google_fonts:
 
 dev_dependencies:
   flutter_test:

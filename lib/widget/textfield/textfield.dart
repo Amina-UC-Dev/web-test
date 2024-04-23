@@ -22,7 +22,8 @@ class TextFieldWidget {
     double? hintSize,
     List<TextInputFormatter>? inputFormatters,
   }) {
-    return SizedBox(height: (type == 1 ? 50 :60).sp,
+    return SizedBox(
+      height: (type == 1 ? 50 : 60).sp,
       child: TextFormField(
         controller: controller,
         focusNode: focusNode,
@@ -42,25 +43,24 @@ class TextFieldWidget {
             color: textColor,
             size: textSize ?? (type == 1 ? 16 : 17)),
         decoration: InputDecoration(
-          errorStyle: const TextStyle(height: 0),
-          hintText: hintText.tr,
-          hintStyle: Styles().normalS(
-              fontW: FontWeight.w400,
-              color: Colours().grey,
-              size: hintSize ?? (type == 1 ? 16 : 17)),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(100),
-            borderSide: BorderSide(color: Colours().grey3, width: 1),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(100),
-            borderSide: BorderSide(color: Colours().primary, width: 1),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
+            errorStyle: const TextStyle(height: 0),
+            hintText: hintText.tr,
+            hintStyle: Styles().normalS(
+                fontW: FontWeight.w400,
+                color: Colours().grey,
+                size: hintSize ?? (type == 1 ? 16 : 17)),
+            enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(100),
-              borderSide: BorderSide(width: 1, color: Colours().primary)),
-          contentPadding: EdgeInsets.symmetric(horizontal: 15.sp)
-        ),
+              borderSide: BorderSide(color: Colours().grey, width: 1),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(100),
+              borderSide: BorderSide(color: Colours().primary, width: 1),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(100),
+                borderSide: BorderSide(width: 1, color: Colours().primary)),
+            contentPadding: EdgeInsets.symmetric(horizontal: 15.sp)),
       ),
     );
   }

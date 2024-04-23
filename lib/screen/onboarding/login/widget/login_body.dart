@@ -1,6 +1,7 @@
 import 'package:beonchat_admin/provider/onboarding/login_provider.dart';
 import 'package:beonchat_admin/screen/onboarding/login/widget/login_form.dart';
 import 'package:beonchat_admin/screen/onboarding/login/widget/login_header.dart';
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -42,14 +43,13 @@ class LoginMobBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<LoginProvider>(builder: (context2, provider, child) {
-      return Column(mainAxisAlignment: MainAxisAlignment.center,
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           LoginHeader(
             type: type,
           ),
-          SizedBox(
-            height: 70.sp,
-          ),
+          MySpacing.height(70.sp),
           LoginForm(
             type: type,
           ),

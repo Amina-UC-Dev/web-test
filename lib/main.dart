@@ -1,4 +1,6 @@
 import 'package:beonchat_admin/const/colors.dart';
+import 'package:beonchat_admin/const/theme.dart';
+import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
 import 'package:beonchat_admin/provider/providers.dart';
 import 'package:beonchat_admin/route/routes.dart';
 import 'package:beonchat_admin/screen/onboarding/splash/splash_responsive.dart';
@@ -7,13 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colours().black,
-      systemNavigationBarIconBrightness: Brightness.light));
-  runApp(MyApp());
+  setPathUrlStrategy();
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -36,44 +40,51 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: providers(),
-      child: GetMaterialApp(
-        builder: (BuildContext context, Widget? child) {
-          return MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
-            ), //set desired text scale factor here
-            child: child!,
-          );
-        },
-        title: 'beonchat admin',
-        color: Colours().primary,
-        debugShowCheckedModeBanner: false,
-        translations: AppTranslation(),
-        locale: const Locale("en", "US"),
-        fallbackLocale: const Locale("en", "US"),
-        navigatorKey: Get.key,
-        routes: routes(),
-        scrollBehavior: const ScrollBehavior().copyWith(
-          physics: const ClampingScrollPhysics(),
-          platform: TargetPlatform.iOS,
-        ),
-        initialRoute: SplashResponsive.routeName,
-        theme: ThemeData(
-          splashColor: Colours().trans,
-          highlightColor: Colours().trans,
-          hoverColor: Colours().trans,
-          brightness: Brightness.dark,
-          primarySwatch: primeColor,
-          primaryColor: Colours().primary,
-          scaffoldBackgroundColor: Colours().bg,
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colours().black,
-            iconTheme: IconThemeData(
-              color: Colours().white,
-            ),
-          ),
+    return ChangeNotifierProvider(
+      create: (context) => AppThemeProvider(),
+      child: MultiProvider(
+        providers: providers(),
+        child: Consumer<AppThemeProvider>(builder: (context2, provider, child) {
+            return GetMaterialApp(
+              builder: (BuildContext context, Widget? child) {
+                return MediaQuery(
+                  data: MediaQuery.of(context).copyWith(
+                    textScaleFactor: 1.0,
+                  ), //set desired text scale factor here
+                  child: child!,
+                );
+              },
+              title: 'beonchat admin',
+              color: Colours().primary,
+              debugShowCheckedModeBanner: false,
+              translations: AppTranslation(),
+              locale: const Locale("en", "US"),
+              fallbackLocale: const Locale("en", "US"),
+              navigatorKey: Get.key,
+              routes: routes(),
+              scrollBehavior: const ScrollBehavior().copyWith(
+                physics: const ClampingScrollPhysics(),
+                platform: TargetPlatform.iOS,
+              ),
+              initialRoute: SplashResponsive.routeName,
+              theme: ThemeDataStyle.themeData(provider.darkTheme, context),
+              // theme: ThemeData(
+              //   splashColor: Colours().trans,
+              //   highlightColor: Colours().trans,
+              //   hoverColor: Colours().trans,
+              //   brightness: Brightness.dark,
+              //   primarySwatch: primeColor,
+              //   primaryColor: Colours().primary,
+              //   scaffoldBackgroundColor: Colours().bg,
+              //   appBarTheme: AppBarTheme(
+              //     backgroundColor: Colours().black,
+              //     iconTheme: IconThemeData(
+              //       color: Colours().white,
+              //     ),
+              //   ),
+              // ),
+            );
+          }
         ),
       ),
     );

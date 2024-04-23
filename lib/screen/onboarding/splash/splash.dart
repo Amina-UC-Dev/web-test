@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:beonchat_admin/const/colors.dart';
+import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
 import 'package:beonchat_admin/screen/onboarding/login/login_responsive.dart';
 import 'package:beonchat_admin/widget/loader/loader_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 
 class Splash extends StatefulWidget {
@@ -21,8 +23,16 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     initSplash();
+    getCurrentAppTheme(context);
     // TODO: implement initState
     super.initState();
+  }
+
+  void getCurrentAppTheme(BuildContext context) async {
+    Provider.of<AppThemeProvider>(context, listen: false).darkTheme =
+        await Provider.of<AppThemeProvider>(context, listen: false)
+            .darkThemePreference
+            .getBool(key: "theme");
   }
 
   initSplash() async {

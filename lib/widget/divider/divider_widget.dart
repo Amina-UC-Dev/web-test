@@ -1,4 +1,3 @@
-import 'package:beonchat_admin/const/colors.dart';
 import 'package:flutter/material.dart';
 
 class DividerWidget extends StatelessWidget {
@@ -15,11 +14,7 @@ class DividerWidget extends StatelessWidget {
         horizontal: hPadding ?? 0,
         vertical: vPadding ?? 0,
       ),
-      child: Divider(
-        color: color ?? Colours().grey2,
-        thickness: .5,
-        height: .5,
-      ),
+      child: const Divider(),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:beonchat_admin/screen/dashboard/dashboard_responsive.dart';
+import 'package:beonchat_admin/screen/dashboard/dashboard.dart';
 import 'package:beonchat_admin/screen/onboarding/login/login_responsive.dart';
 import 'package:beonchat_admin/screen/onboarding/splash/splash_responsive.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,6 @@ Map<String, WidgetBuilder> routes() {
   return {
     SplashResponsive.routeName: (ctx) => const SplashResponsive(),
     LoginResponsive.routeName: (ctx) => const LoginResponsive(),
-    DashBoardResponsive.routeName: (ctx) => const DashBoardResponsive(),
+    DashBoard.routeName: (ctx) => const DashBoard(),
   };
 }

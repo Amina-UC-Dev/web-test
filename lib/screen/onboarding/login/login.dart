@@ -1,11 +1,8 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/provider/onboarding/login_provider.dart';
 import 'package:beonchat_admin/screen/onboarding/login/widget/login_body.dart';
-import 'package:beonchat_admin/screen/onboarding/login/widget/login_form.dart';
-import 'package:beonchat_admin/widget/logo/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatelessWidget {

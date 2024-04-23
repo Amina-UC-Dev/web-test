@@ -1,5 +1,6 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -71,9 +72,7 @@ class AlertLoaderBody extends StatelessWidget {
                 height: 60.sp,
                 color: Colours().black,
               ),
-              const SizedBox(
-                width: 10,
-              ),
+              MySpacing.width(10),
               Text(
                 "wait".tr,
                 style: Styles().normalS(

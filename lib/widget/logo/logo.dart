@@ -30,6 +30,7 @@ class LogoText extends StatelessWidget {
           ),
         ],
       ),
+      maxLines: 1,
     );
   }
 }
