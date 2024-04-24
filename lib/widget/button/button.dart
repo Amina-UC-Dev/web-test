@@ -1,5 +1,6 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
+import 'package:beonchat_admin/const/text_size.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,7 +44,8 @@ class ButtonWidget {
       color: color,
       child: Text(
         title.tr,
-        style: Styles().normalS(
+        style: Styles().text(
+          textType: MyTextType.bodyMedium,
           fontW: fontW ?? FontWeight.w700,
           color: textColor,
           size: fontSize ?? (type == 1 ? 16 : 18),

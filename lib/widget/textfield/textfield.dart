@@ -1,5 +1,6 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
+import 'package:beonchat_admin/const/text_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -37,14 +38,16 @@ class TextFieldWidget {
         onFieldSubmitted: onSubmit,
         validator: validator,
         obscureText: obscure,
-        style: Styles().normalS(
+        style: Styles().text(
+          textType: MyTextType.bodyMedium,
             fontW: FontWeight.w400,
             color: textColor,
             size: textSize ?? (type == 1 ? 16 : 17)),
         decoration: InputDecoration(
             errorStyle: const TextStyle(height: 0),
             hintText: hintText.tr,
-            hintStyle: Styles().normalS(
+            hintStyle: Styles().text(
+              textType: MyTextType.bodyMedium,
                 fontW: FontWeight.w400,
                 color: Colours().grey,
                 size: hintSize ?? (type == 1 ? 16 : 17)),

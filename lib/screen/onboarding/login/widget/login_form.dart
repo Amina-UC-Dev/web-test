@@ -1,5 +1,6 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
+import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/provider/main/main_provider.dart';
 import 'package:beonchat_admin/provider/onboarding/login_provider.dart';
 import 'package:beonchat_admin/screen/dashboard/dashboard_responsive.dart';
@@ -22,7 +23,8 @@ class LoginForm extends StatelessWidget {
         children: [
           Text(
             "welcome back",
-            style: Styles().normalS(
+            style: Styles().text(
+              textType: MyTextType.titleLarge,
               fontW: FontWeight.w500,
               color: Colours().white,
               size: type == 3 ? 25 : 20,

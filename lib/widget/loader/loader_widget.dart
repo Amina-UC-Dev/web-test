@@ -1,5 +1,6 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
+import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/widget/responsive/my_responsive.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
@@ -82,7 +83,8 @@ class AlertLoaderBody extends StatelessWidget {
               MySpacing.width(10),
               Text(
                 "wait".tr,
-                style: Styles().normalS(
+                style: Styles().text(
+                  textType: MyTextType.bodyMedium,
                   fontW: FontWeight.w400,
                   color: Colours().black,
                   size: type == 1 ? 16 : 18,
