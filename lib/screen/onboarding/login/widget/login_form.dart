@@ -4,10 +4,12 @@ import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/provider/main/main_provider.dart';
 import 'package:beonchat_admin/provider/onboarding/login_provider.dart';
 import 'package:beonchat_admin/screen/dashboard/dashboard_responsive.dart';
+import 'package:beonchat_admin/service/validator/email_validator.dart';
 import 'package:beonchat_admin/widget/button/button.dart';
 import 'package:beonchat_admin/widget/textfield/textfield.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class LoginForm extends StatelessWidget {
@@ -38,10 +40,17 @@ class LoginForm extends StatelessWidget {
             hintText: "email",
             obscure: false,
             validator: (val) {
+              if (val!.isEmpty) {
+                return "required".tr;
+              } else if (!val.isValidEmail()) {
+                return "required".tr;
+              }
               return null;
             },
             onChange: (val) {},
-            onSubmit: (val) {},
+            onSubmit: (val) {
+              FocusScope.of(context).requestFocus(provider.passwordFocus);
+            },
             textColor: Colours().white,
           ),
           MySpacing.height(type == 1 ? 10 : 15),
@@ -52,6 +61,11 @@ class LoginForm extends StatelessWidget {
             hintText: "password",
             obscure: false,
             validator: (val) {
+              if (val!.isEmpty) {
+                return "required".tr;
+              }else if (val.length < 5) {
+                return "required".tr;
+              }
               return null;
             },
             onChange: (val) {},
