@@ -2,7 +2,6 @@ import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class TextFieldWidget {
@@ -23,7 +22,7 @@ class TextFieldWidget {
     List<TextInputFormatter>? inputFormatters,
   }) {
     return SizedBox(
-      height: (type == 1 ? 50 : 60).sp,
+      height: type == 1 ? 50 : 60,
       child: TextFormField(
         controller: controller,
         focusNode: focusNode,
@@ -60,7 +59,7 @@ class TextFieldWidget {
             focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(100),
                 borderSide: BorderSide(width: 1, color: Colours().primary)),
-            contentPadding: EdgeInsets.symmetric(horizontal: 15.sp)),
+            contentPadding: EdgeInsets.symmetric(horizontal: 15)),
       ),
     );
   }

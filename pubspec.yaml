@@ -38,9 +38,7 @@ dependencies:
   provider:
   logger:
   shared_preferences:
-  flutter_screenutil:
   video_player:
-  responsive_builder:
   get:
   get_storage:
   flutter_svg:

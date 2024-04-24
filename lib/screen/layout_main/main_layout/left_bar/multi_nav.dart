@@ -4,7 +4,7 @@ import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/model/navigation_bar/navigation_bar_model.dart';
 import 'package:beonchat_admin/provider/main/main_provider.dart';
-import 'package:beonchat_admin/screen/layout_main/left_bar/multi_nav_item.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/left_bar/multi_nav_item.dart';
 import 'package:beonchat_admin/widget/util/custom_pop_menu.dart';
 import 'package:beonchat_admin/widget/util/my_container.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';

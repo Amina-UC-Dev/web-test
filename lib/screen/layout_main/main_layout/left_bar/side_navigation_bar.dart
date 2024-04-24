@@ -1,9 +1,9 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
 import 'package:beonchat_admin/provider/main/main_provider.dart';
-import 'package:beonchat_admin/screen/layout_main/left_bar/multi_nav.dart';
-import 'package:beonchat_admin/screen/layout_main/left_bar/nav_header.dart';
-import 'package:beonchat_admin/screen/layout_main/left_bar/nav.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/left_bar/multi_nav.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/left_bar/nav.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/left_bar/nav_header.dart';
 import 'package:beonchat_admin/widget/logo/logo.dart';
 import 'package:beonchat_admin/widget/util/my_card.dart';
 import 'package:beonchat_admin/widget/util/my_shadow.dart';
@@ -73,7 +73,6 @@ class SideNavigationBar extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   NavHeader(
-
                                     title: mainPro.navigation[i].title,
                                     dark: theme.darkTheme,
                                     hide: mainPro.minimizeDrawer,

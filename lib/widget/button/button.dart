@@ -1,7 +1,6 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ButtonWidget {
@@ -38,7 +37,7 @@ class ButtonWidget {
                   ),
         side: side ?? BorderSide.none,
       ),
-      height: h ?? (type == 1 ? 50.sp : 60.sp),
+      height: h ?? (type == 1 ? 50 : 60),
       onPressed: onTap,
       elevation: all ? 2 : 0,
       color: color,
@@ -61,7 +60,7 @@ class ButtonWidget {
     required Function() callB2,
   }) {
     return SizedBox(
-      height: type == 1 ? 50.sp : 60.sp,
+      height: type == 1 ? 50 : 60,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -121,13 +120,13 @@ class SingleButton extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.only(
-        top: 10.sp,
-        bottom: 35.sp,
-        left: type == 1 ? 40.sp : (w / 3.7).sp,
-        right: type == 1 ? 40.sp : (w / 3.7).sp,
+        top: 10,
+        bottom: 35,
+        left: type == 1 ? 40 : w / 3.7,
+        right: type == 1 ? 40 :w / 3.7,
       ),
       child: SizedBox(
-        height: 50.sp,
+        height: 50,
         child: Center(
           child: ButtonWidget().button(
             textColor: textColor ?? Colours().white,
@@ -174,12 +173,12 @@ class SingleAlertButton extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.only(
-        bottom: bottomPadding.sp,
-        left: horizontalPadding.sp,
-        right: horizontalPadding.sp,
+        bottom: bottomPadding,
+        left: horizontalPadding,
+        right: horizontalPadding,
       ),
       child: SizedBox(
-        height: type == 1 ? 50.sp : 60.sp,
+        height: type == 1 ? 50 : 60,
         child: Center(
           child: ButtonWidget().button(
             textColor: Colours().white,

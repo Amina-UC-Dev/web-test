@@ -3,7 +3,7 @@ import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
 import 'package:beonchat_admin/provider/dashboard/dashboard_provider.dart';
-import 'package:beonchat_admin/screen/layout_main/layout.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/layout.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex_item.dart';
 import 'package:beonchat_admin/widget/responsive/responsive.dart';
@@ -42,23 +42,92 @@ class DashBoard extends StatelessWidget {
               MySpacing.height(flexSpacing),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: flexSpacing / 2),
-                child: GridView.count(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisCount: type == 3 ? 5 : type,
-                  childAspectRatio: 1.3,
-                  children: [0, 0, 0, 0, 0].map((e) {
-                    return buildCard(
-                        Colours().primary,
-                        Icons.margin,
-                        "Engaged",
-                        "\$50",
-                        Icons.trending_up,
-                        Colours().red,
-                        "2.5",
-                        "Last Week",
-                        themePro.darkTheme);
-                  }).toList(),
+                child: MyFlex(
+                  runAlignment: WrapAlignment.start,
+                  wrapCrossAlignment: WrapCrossAlignment.start,
+                  // contentPadding: false,
+                  children: [
+                    MyFlexItem(
+                      sizes: "lg-12",
+                      child: MyFlex(
+                        runAlignment: WrapAlignment.start,
+                        wrapCrossAlignment: WrapCrossAlignment.start,
+                        contentPadding: false,
+                        children: [
+                          MyFlexItem(
+                            sizes: "lg-2",
+                            child: buildCard(
+                              Colours().pink,
+                              Icons.groups,
+                              "total user profiles",
+                              "710",
+                              Icons.trending_up,
+                              Colours().success,
+                              "1.25",
+                              "Last Month",
+                              themePro.darkTheme,
+                            ),
+                          ),
+                          MyFlexItem(
+                            sizes: "lg-2",
+                            child: buildCard(
+                              Colours().primary,
+                              Icons.home_work_rounded,
+                              "total companies",
+                              "878",
+                              Icons.trending_down,
+                              Colours().red,
+                              "2.5",
+                              "Last Week",
+                              themePro.darkTheme,
+                            ),
+                          ),
+                          MyFlexItem(
+                            sizes: "lg-2",
+                            child: buildCard(
+                              Colours().success,
+                              Icons.people_sharp,
+                              "total user reg",
+                              "0",
+                              Icons.trending_down,
+                              Colours().red,
+                              "1.23",
+                              "Last Month",
+                              themePro.darkTheme,
+                            ),
+                          ),
+                          MyFlexItem(
+                            sizes: "lg-2",
+                            child: buildCard(
+                              Colours().warning,
+                             Icons.contact_mail_rounded,
+                              "total company reg",
+                              "0",
+                              Icons.trending_up,
+                              Colours().success,
+                              "0.2",
+                              "Last Day",
+                              themePro.darkTheme,
+                            ),
+                          ),
+                          MyFlexItem(
+                            sizes: "lg-2",
+                            child: buildCard(
+                              Colours().blue,
+                              Icons.pending_actions_outlined,
+                              "pending user profile",
+                              "384",
+                              Icons.trending_up,
+                              Colours().success,
+                              "0.2",
+                              "Last Day",
+                              themePro.darkTheme,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

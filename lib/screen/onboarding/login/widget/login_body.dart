@@ -3,7 +3,6 @@ import 'package:beonchat_admin/screen/onboarding/login/widget/login_form.dart';
 import 'package:beonchat_admin/screen/onboarding/login/widget/login_header.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class LoginWebBody extends StatelessWidget {
@@ -15,7 +14,7 @@ class LoginWebBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LoginProvider>(builder: (context2, provider, child) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: (type == 1 ? 20 : 40).sp),
+        padding: EdgeInsets.symmetric(horizontal: type == 1 ? 20 : 40),
         child: Row(
           children: [
             Expanded(
@@ -49,7 +48,7 @@ class LoginMobBody extends StatelessWidget {
           LoginHeader(
             type: type,
           ),
-          MySpacing.height(70.sp),
+          MySpacing.height(70),
           LoginForm(
             type: type,
           ),

@@ -1,6 +1,6 @@
 import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
-import 'package:beonchat_admin/screen/layout_main/left_bar/side_navigation_bar.dart';
-import 'package:beonchat_admin/screen/layout_main/top_bar/topBar.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/left_bar/side_navigation_bar.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/top_bar/topbar.dart';
 import 'package:beonchat_admin/widget/responsive/my_responsive.dart';
 import 'package:beonchat_admin/widget/responsive/responsive.dart';
 import 'package:flutter/material.dart';

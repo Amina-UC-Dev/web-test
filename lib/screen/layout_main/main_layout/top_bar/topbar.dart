@@ -4,8 +4,8 @@ import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/const/utils.dart';
 import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
 import 'package:beonchat_admin/provider/main/main_provider.dart';
-import 'package:beonchat_admin/screen/layout_main/top_bar/topbar_notification_alert.dart';
-import 'package:beonchat_admin/screen/layout_main/top_bar/topbar_profile_alert.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/top_bar/topbar_notification_alert.dart';
+import 'package:beonchat_admin/screen/layout_main/main_layout/top_bar/topbar_profile_alert.dart';
 import 'package:beonchat_admin/widget/util/custom_pop_menu.dart';
 import 'package:beonchat_admin/widget/util/my_card.dart';
 import 'package:beonchat_admin/widget/util/my_container.dart';
@@ -136,7 +136,7 @@ class MainAppBarActions extends StatelessWidget {
             child: CustomPopupMenu(
               backdrop: true,
               onChange: (_) {},
-              offsetX: mobile ? 180 : -120,
+              offsetX: mobile ? -149 : -120,
               menu: Padding(
                 padding: const EdgeInsets.all(8),
                 child: Center(

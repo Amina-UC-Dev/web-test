@@ -1,17 +1,16 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
+import 'package:beonchat_admin/widget/responsive/my_responsive.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 class Loader {
   showLoader({double? size, Color? color}) {
     return Center(
       child: Image.asset(
         "assets/load.gif",
-        height: size ?? 70.sp,
+        height: size ?? 70,
         color: color ?? Colours().primary,
       ),
     );
@@ -22,11 +21,15 @@ class Loader {
       context: context,
       barrierDismissible: false,
       builder: (ctx) {
-        return ScreenTypeLayout(
-          mobile: const AlertLoaderBody(type: 1),
-          tablet: const AlertLoaderBody(type: 2),
-          desktop: const AlertLoaderBody(type: 3),
-        );
+        return MyResponsive(builder: (BuildContext context2, _, screenMT) {
+          return AlertLoaderBody(
+            type: screenMT.isMobile
+                ? 1
+                : screenMT.isTablet
+                ? 2
+                : 3,
+          );
+        });
       },
     );
   }
@@ -37,11 +40,15 @@ class Loader {
       barrierColor: Colours().trans,
       barrierDismissible: false,
       builder: (ctx) {
-        return ScreenTypeLayout(
-          mobile: const AlertTransLoaderBody(type: 1),
-          tablet: const AlertTransLoaderBody(type: 2),
-          desktop: const AlertTransLoaderBody(type: 3),
-        );
+        return MyResponsive(builder: (BuildContext context2, _, screenMT) {
+          return AlertTransLoaderBody(
+            type: screenMT.isMobile
+                ? 1
+                : screenMT.isTablet
+                ? 2
+                : 3,
+          );
+        });
       },
     );
   }
@@ -69,7 +76,7 @@ class AlertLoaderBody extends StatelessWidget {
             children: [
               Image.asset(
                 "assets/load.gif",
-                height: 60.sp,
+                height: 60,
                 color: Colours().black,
               ),
               MySpacing.width(10),
@@ -112,7 +119,7 @@ class AlertTransLoaderBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Image.asset(
               "assets/load.gif",
-              height: 45.sp,
+              height: 45,
               color: Colours().primary,
             ),
           ),

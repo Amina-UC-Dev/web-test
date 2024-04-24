@@ -2,7 +2,6 @@ import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/provider/onboarding/login_provider.dart';
 import 'package:beonchat_admin/screen/onboarding/login/widget/login_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatelessWidget {
@@ -21,10 +20,10 @@ class Login extends StatelessWidget {
           child: Container(
             width: type == 3 ? w / 1.8 : w,
             height: type == 3 ? h / 1.7 : type == 2 ? h / 1.5 : h,
-            margin: EdgeInsets.all((type == 1 ? 40 : 60).sp),
+            margin: EdgeInsets.all(type == 1 ? 40 : 60),
             decoration: BoxDecoration(
               color: Colours().black,
-              borderRadius: BorderRadius.circular(20.sp),
+              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
                   color: Colours().black.withOpacity(0.5),
@@ -35,8 +34,8 @@ class Login extends StatelessWidget {
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: (type == 1 ? 40 : 55).sp,
-                  vertical: (type == 1 ? 50 : 60).sp),
+                  horizontal: type == 1 ? 40 : 55,
+                  vertical: type == 1 ? 50 : 60),
               child: type == 1
                   ? LoginMobBody(
                       type: type,
