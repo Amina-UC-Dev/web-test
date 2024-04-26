@@ -3,17 +3,16 @@ import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/model/news_feeds/news_feeds_articles_all_model.dart';
 import 'package:beonchat_admin/provider/news_feeds/news_feeds_articles_provider.dart';
-import 'package:beonchat_admin/widget/button/button.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex_item.dart';
 import 'package:beonchat_admin/widget/table/table.dart';
+import 'package:beonchat_admin/widget/textfield/textfield.dart';
 import 'package:beonchat_admin/widget/util/my_button.dart';
 import 'package:beonchat_admin/widget/util/my_card.dart';
 import 'package:beonchat_admin/widget/util/my_container.dart';
 import 'package:beonchat_admin/widget/util/my_shadow.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:provider/provider.dart';
 
 class NewsFeedsArticlesListWidget extends StatelessWidget {
@@ -21,14 +20,6 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
 
   final bool dark;
   final int type;
-
-  OutlineInputBorder get outlineInputBorder => OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(4)),
-    borderSide: BorderSide(
-        width: 1,
-        strokeAlign: 0,
-        color: Colours().appBarOnBgColor(dark),
-  ));
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +63,9 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
                       runSpacing: 0,
                       children: [
                         MyButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            AlertDialog().show(context: context);
+                          },
                           elevation: 0,
                           padding: MySpacing.xy(20, 16),
                           backgroundColor: Colours().blue,
@@ -123,9 +116,14 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
                 TextFormField(
                   decoration: InputDecoration(
                       hintText: "First Name",
-                      hintStyle: MyTextStyle.bodySmall(xMuted: true),
-                      border: outlineInputBorder,
-                      enabledBorder: outlineInputBorder,
+                      hintStyle: Styles().text(
+                        textType: MyTextType.bodySmall,
+                        color: Colours().appBarOnBgColor(dark),
+                        fontW: FontWeight.w400,
+                        size: 13,
+                      ),
+                      border: outlineInputBorder(dark),
+                      enabledBorder: outlineInputBorder(dark),
                       focusedBorder: focusedInputBorder,
                       contentPadding: MySpacing.all(16),
                       isCollapsed: true,
@@ -290,17 +288,17 @@ class NewsFeedsArticlesDataTableWidget extends StatelessWidget {
         //arrowHeadColor: Colours().grey2,
         source: newsFeedsPro.newsFeedsArticleListData!,
         columns: [
-          DataColumn(label: TableRowHead( label: "id", dark: dark)),
-          DataColumn(label: TableRowHead( label: "type", dark: dark)),
-          DataColumn(label: TableRowHead( label: "category", dark: dark)),
-          DataColumn(label: TableRowHead( label: "sort", dark: dark)),
-          DataColumn(label: TableRowHead( label: "title", dark: dark)),
-          DataColumn(label: TableRowHead( label: "description", dark: dark)),
-          DataColumn(label: TableRowHead( label: "ads title", dark: dark)),
-          DataColumn(label: TableRowHead( label: "article date", dark: dark)),
-          DataColumn(label: TableRowHead( label: "date created", dark: dark)),
-          DataColumn(label: TableRowHead( label: "action", dark: dark)),
-          DataColumn(label: TableRowHead( label: "action", dark: dark)),
+          DataColumn(label: TableRowHead(label: "id", dark: dark)),
+          DataColumn(label: TableRowHead(label: "type", dark: dark)),
+          DataColumn(label: TableRowHead(label: "category", dark: dark)),
+          DataColumn(label: TableRowHead(label: "sort", dark: dark)),
+          DataColumn(label: TableRowHead(label: "title", dark: dark)),
+          DataColumn(label: TableRowHead(label: "description", dark: dark)),
+          DataColumn(label: TableRowHead(label: "ads title", dark: dark)),
+          DataColumn(label: TableRowHead(label: "article date", dark: dark)),
+          DataColumn(label: TableRowHead(label: "date created", dark: dark)),
+          DataColumn(label: TableRowHead(label: "action", dark: dark)),
+          DataColumn(label: TableRowHead(label: "action", dark: dark)),
         ],
         columnSpacing: 25,
         horizontalMargin: 28,
@@ -384,6 +382,52 @@ class NewsFeedsArticleDataTableSource extends DataTableSource {
               )),
         )
       ],
+    );
+  }
+}
+
+class AlertDialog {
+  show({required BuildContext context}) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) {
+        return Dialog(
+          child: SizedBox(
+            width: 400,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: MySpacing.all(16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: Text("static dialog",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: Styles().text(
+                                textType: MyTextType.labelMedium,
+                                color: Colours().white,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ))),
+                      InkWell(onTap: () => Navigator.pop(context), child: Text('close'))
+                    ],
+                  ),
+                ),
+                const Divider(height: 0, thickness: 1),
+                Padding(
+                  padding: MySpacing.all(16),
+                  child: Text("asdasdasd"),
+                ),
+                const Divider(height: 0, thickness: 1),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

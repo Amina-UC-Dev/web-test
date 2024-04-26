@@ -46,6 +46,7 @@ dependencies:
   google_fonts:
   responsive_grid_list:
   syncfusion_flutter_charts: ^20.1.52
+  lucide_icons:
 
 dev_dependencies:
   flutter_test:
