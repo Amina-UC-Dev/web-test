@@ -8,17 +8,17 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class DialogWidget {
-  show({required BuildContext context, required bool dark, String? title, required Column content, String? size}) {
+  show({required BuildContext context, required bool dark, String? title, required Widget content, String? size}) {
     title = title ?? 'alert';
     size = size ?? 'medium';
 
     double sizeDialog = 850;
 
-    if (size=="sm") {
+    if (size == "sm") {
       sizeDialog = 300;
-    }else if (size=="lg"){
+    } else if (size == "lg") {
       sizeDialog = 950;
-    }else if (size=="xl"){
+    } else if (size == "xl") {
       sizeDialog = 1150;
     }
     return showDialog(
@@ -59,7 +59,7 @@ class DialogWidget {
                 ),
                 const Divider(height: 0, thickness: 1),
                 Padding(
-                  padding: MySpacing.all(16),
+                  padding: MySpacing.xy(15, 20),
                   child: content,
                 ),
               ],

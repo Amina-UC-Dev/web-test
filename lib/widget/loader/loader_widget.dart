@@ -27,8 +27,8 @@ class Loader {
             type: screenMT.isMobile
                 ? 1
                 : screenMT.isTablet
-                ? 2
-                : 3,
+                    ? 2
+                    : 3,
           );
         });
       },
@@ -46,8 +46,8 @@ class Loader {
             type: screenMT.isMobile
                 ? 1
                 : screenMT.isTablet
-                ? 2
-                : 3,
+                    ? 2
+                    : 3,
           );
         });
       },
@@ -66,12 +66,12 @@ class AlertLoaderBody extends StatelessWidget {
     return Dialog(
       backgroundColor: Colours().white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      insetPadding: EdgeInsets.symmetric(
-        horizontal: type == 1 ? 40 : w / 5.12,
+      insetPadding: MySpacing.x(
+        type == 1 ? 40 : w / 5.12,
       ),
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: MySpacing.y(10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -113,12 +113,12 @@ class AlertTransLoaderBody extends StatelessWidget {
       child: Dialog(
         backgroundColor: Colours().trans,
         shadowColor: Colours().trans,
-        insetPadding: EdgeInsets.symmetric(
-          horizontal: type == 1 ? 40 : w / 5.12,
+        insetPadding: MySpacing.x(
+          type == 1 ? 40 : w / 5.12,
         ),
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: MySpacing.y(10),
             child: Image.asset(
               "assets/load.gif",
               height: 45,

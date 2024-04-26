@@ -30,7 +30,7 @@ class MainTopBar extends StatelessWidget {
                   position: MyShadowPosition.bottomRight, elevation: 0.5),
               height: 60,
               borderRadiusAll: 0,
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: MySpacing.x(24),
               color: Colours().appBarBgColor(theme.darkTheme),
               child: Row(
                 children: [
@@ -82,8 +82,7 @@ class MainTopBar extends StatelessWidget {
                                   maxWidth: 36,
                                   minHeight: 32,
                                   maxHeight: 32),
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 12),
+                              contentPadding: MySpacing.xy(16, 12),
                               isCollapsed: true,
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.never),
@@ -126,7 +125,7 @@ class MainAppBarActions extends StatelessWidget {
               theme.darkTheme
                   ? Icons.light_mode_outlined
                   : Icons.dark_mode_outlined,
-              size: mobile  ? 18 : null,
+              size: mobile ? 18 : null,
               color: Colours().appBarOnBgColor(theme.darkTheme),
             ),
           ),
@@ -138,7 +137,7 @@ class MainAppBarActions extends StatelessWidget {
               onChange: (_) {},
               offsetX: mobile ? -149 : -120,
               menu: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: MySpacing.all(8),
                 child: Center(
                   child: Icon(
                     Icons.notifications_none_rounded,
@@ -159,7 +158,7 @@ class MainAppBarActions extends StatelessWidget {
               offsetX: mobile ? -90 : -60,
               offsetY: mobile ? 4 : 8,
               menu: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: MySpacing.all(8),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

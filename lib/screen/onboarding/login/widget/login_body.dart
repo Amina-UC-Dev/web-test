@@ -14,7 +14,7 @@ class LoginWebBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LoginProvider>(builder: (context2, provider, child) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: type == 1 ? 20 : 40),
+        padding: MySpacing.x(type == 1 ? 20 : 40),
         child: Row(
           children: [
             Expanded(

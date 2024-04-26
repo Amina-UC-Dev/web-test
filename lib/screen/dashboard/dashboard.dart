@@ -42,13 +42,13 @@ class DashBoard extends StatelessWidget {
               MySpacing.height(flexSpacing),
               Padding(
                 padding: MySpacing.x(flexSpacing),
-                child: DashboardProfileCountersWidget(),
+                child: const DashboardProfileCountersWidget(),
               ),
 
               // CAMPAIGN + ACTIVE USERS
               MySpacing.height(flexSpacing),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
+                padding: MySpacing.x(flexSpacing),
                 child: MyFlex(
                   runAlignment: WrapAlignment.start,
                   wrapCrossAlignment: WrapCrossAlignment.start,
@@ -56,11 +56,13 @@ class DashBoard extends StatelessWidget {
                   children: [
                     MyFlexItem(
                       sizes: "lg-6",
-                      child: DashboardCampaignReportWidget(dark: themePro.darkTheme),
+                      child: DashboardCampaignReportWidget(
+                          dark: themePro.darkTheme),
                     ),
                     MyFlexItem(
                       sizes: "lg-6",
-                      child: DashboardActiveUsersWidget(dark: themePro.darkTheme),
+                      child:
+                          DashboardActiveUsersWidget(dark: themePro.darkTheme),
                     )
                   ],
                 ),
@@ -69,7 +71,7 @@ class DashBoard extends StatelessWidget {
               // TODAY USER + COMPANY REGISTERED
               MySpacing.height(flexSpacing),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
+                padding: MySpacing.x(flexSpacing),
                 child: MyFlex(
                   runAlignment: WrapAlignment.start,
                   wrapCrossAlignment: WrapCrossAlignment.start,
@@ -77,11 +79,13 @@ class DashBoard extends StatelessWidget {
                   children: [
                     MyFlexItem(
                       sizes: "lg-6",
-                      child: DashboardTodayUserRegisteredWidget(dark: themePro.darkTheme),
+                      child: DashboardTodayUserRegisteredWidget(
+                          dark: themePro.darkTheme),
                     ),
                     MyFlexItem(
                       sizes: "lg-6",
-                      child: DashboardCompanyRegisteredWidget(dark: themePro.darkTheme),
+                      child: DashboardCompanyRegisteredWidget(
+                          dark: themePro.darkTheme),
                     )
                   ],
                 ),
@@ -90,7 +94,7 @@ class DashBoard extends StatelessWidget {
               // PENDING USER + COMPANY REGISTERED
               MySpacing.height(flexSpacing),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
+                padding: MySpacing.x(flexSpacing),
                 child: MyFlex(
                   runAlignment: WrapAlignment.start,
                   wrapCrossAlignment: WrapCrossAlignment.start,
@@ -98,11 +102,13 @@ class DashBoard extends StatelessWidget {
                   children: [
                     MyFlexItem(
                       sizes: "lg-6",
-                      child: DashboardPendingUserWidget(dark: themePro.darkTheme),
+                      child:
+                          DashboardPendingUserWidget(dark: themePro.darkTheme),
                     ),
                     MyFlexItem(
                       sizes: "lg-6",
-                      child: DashboardPendingCompanyWidget(dark: themePro.darkTheme),
+                      child: DashboardPendingCompanyWidget(
+                          dark: themePro.darkTheme),
                     )
                   ],
                 ),

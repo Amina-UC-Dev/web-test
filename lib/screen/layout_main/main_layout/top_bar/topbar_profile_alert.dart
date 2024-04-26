@@ -17,7 +17,7 @@ Widget buildAccountMenu(BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: MySpacing.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -25,8 +25,7 @@ Widget buildAccountMenu(BuildContext context) {
                   onPressed: () {},
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   borderRadiusAll: 4,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: MySpacing.xy(8, 4),
                   splashColor:
                       ThemeData().colorScheme.onBackground.withAlpha(20),
                   backgroundColor: Colors.transparent,
@@ -57,8 +56,7 @@ Widget buildAccountMenu(BuildContext context) {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   onPressed: () {},
                   borderRadiusAll: 4,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: MySpacing.xy(8, 4),
                   splashColor:
                       ThemeData().colorScheme.onBackground.withAlpha(20),
                   backgroundColor: Colors.transparent,
@@ -92,12 +90,12 @@ Widget buildAccountMenu(BuildContext context) {
             thickness: 1,
           ),
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: MySpacing.all(8),
             child: MyButton(
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               onPressed: () {},
               borderRadiusAll: 4,
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              padding: MySpacing.xy(8, 4),
               splashColor: Colours().red2.withAlpha(28),
               backgroundColor: Colors.transparent,
               child: Row(

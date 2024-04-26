@@ -1,6 +1,7 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -114,7 +115,7 @@ class SingleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.only(
+      padding: MySpacing.only(
         top: 10,
         bottom: 35,
         left: type == 1 ? 40 : w / 3.7,
@@ -168,7 +169,7 @@ class SingleAlertButton extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.only(
+      padding: MySpacing.only(
         bottom: bottomPadding,
         left: horizontalPadding,
         right: horizontalPadding,

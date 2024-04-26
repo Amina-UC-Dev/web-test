@@ -8,10 +8,7 @@ import 'package:flutter/material.dart';
 
 class NavTile extends StatelessWidget {
   const NavTile(
-      {super.key,
-      required this.hide,
-      required this.dark,
-      required this.data});
+      {super.key, required this.hide, required this.dark, required this.data});
 
   final bool hide, dark;
   final NavBarItem data;
@@ -19,11 +16,11 @@ class NavTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyContainer.transparent(
-      margin: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+      margin: MySpacing.fromLTRB(16, 0, 16, 8),
       color: (data.active || data.hover) && !data.multi
           ? Colours().activeCardColor(dark)
           : Colours().trans,
-      padding: const EdgeInsets.all(8),
+      padding: MySpacing.all(8),
       child: Row(
         mainAxisAlignment:
             hide ? MainAxisAlignment.center : MainAxisAlignment.start,

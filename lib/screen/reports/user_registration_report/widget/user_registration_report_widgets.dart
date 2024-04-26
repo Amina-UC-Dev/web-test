@@ -5,6 +5,7 @@ import 'package:beonchat_admin/model/reports/user_registration_all_model.dart';
 import 'package:beonchat_admin/provider/reports/user_registration_report_provider.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex_item.dart';
+import 'package:beonchat_admin/widget/textfield/textfield.dart';
 import 'package:beonchat_admin/widget/util/my_button.dart';
 import 'package:beonchat_admin/widget/util/my_card.dart';
 import 'package:beonchat_admin/widget/util/my_container.dart';
@@ -32,7 +33,7 @@ class UserRegistrationReportChartWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: MySpacing.all(16),
               child: Text(
                 'User Registration',
                 style: Styles().text(
@@ -66,7 +67,7 @@ class UserRegistartionReportFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<UserRegistrationReportProvider>(builder: (_, userRgistrationPro, __) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25),
+        padding: MySpacing.x(25),
         child: Center(
           child: MyFlex(
             runAlignment: WrapAlignment.start,
@@ -93,46 +94,42 @@ class UserRegistartionReportFilterWidget extends StatelessWidget {
                           ),
                         ),
                         MySpacing.height(5),
-                        PopupMenuButton(
-                            onSelected: userRgistrationPro.onChangeLabelType,
-                            itemBuilder: (BuildContext context) {
-                              return userRgistrationPro.listOption.map((option) {
-                                return PopupMenuItem(
+                        DropdownButtonFormField(
+                            dropdownColor: Colours().white,
+                            menuMaxHeight: 200,
+                            isExpanded: true,
+                            items: userRgistrationPro.listOption
+                                .map((option) => DropdownMenuItem(
                                     value: option,
-                                    height: 32,
                                     child: Text(option["name"],
                                         maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                         style: Styles().text(
                                           textType: MyTextType.bodySmall,
                                           color: Colours().appBarOnBgColor(dark),
                                           fontW: FontWeight.w400,
-                                          size: 13,
-                                        )));
-                              }).toList();
-                            },
-                            color: Colours().cardColor(dark),
-                            child: MyContainer.bordered(
-                              padding: MySpacing.xy(12, 8),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(userRgistrationPro.selectdOpitonValue,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: Styles().text(
-                                          textType: MyTextType.labelMedium,
-                                          color: Colours().appBarOnBgColor(dark),
-                                          fontW: FontWeight.w400,
-                                          size: 13,
-                                        )),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(left: 4),
-                                    child: Icon(LucideIcons.chevronDown, size: 22, color: Colours().appBarOnBgColor(dark)),
-                                  )
-                                ],
-                              ),
-                            )),
+                                          size: 12,
+                                        ))))
+                                .toList(),
+                            icon: const Icon(
+                              LucideIcons.chevronDown,
+                              size: 20,
+                            ),
+                            decoration: InputDecoration(
+                                hintText: "select",
+                                hintStyle: Styles().text(
+                                  textType: MyTextType.labelMedium,
+                                  color: Colours().appBarOnBgColor(dark),
+                                  fontW: FontWeight.w400,
+                                  size: 12,
+                                ),
+                                border: outlineInputBorder(dark),
+                                enabledBorder: outlineInputBorder(dark),
+                                focusedBorder: focusedInputBorder,
+                                contentPadding: MySpacing.all(16),
+                                isCollapsed: true,
+                                floatingLabelBehavior: FloatingLabelBehavior.never),
+                            onChanged: userRgistrationPro.onChangeLabelType),
                       ],
                     )),
               MyFlexItem(
@@ -169,7 +166,7 @@ class UserRgistrationReportChartBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<UserRegistrationReportProvider>(builder: (_, userRgistrationPro, __) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: MySpacing.x(20),
         child: SfCartesianChart(
           //title: ChartTitle(text: 'Campaign Report'),
           plotAreaBorderWidth: 0,

@@ -1,5 +1,6 @@
 import 'package:beonchat_admin/model/news_feeds/news_feeds_articles_all_model.dart';
 import 'package:beonchat_admin/screen/news_feeds/news_feeds_articles/widget/news_feeds_articles_widgets.dart';
+import 'package:beonchat_admin/widget/util/my_form_validator.dart';
 import 'package:flutter/material.dart';
 
 class NewsFeedsArticlesProvider extends ChangeNotifier {
@@ -14,6 +15,9 @@ class NewsFeedsArticlesProvider extends ChangeNotifier {
     {"id": "3", "name": "name here 3"},
     {"id": "4", "name": "name here 4"}
   ];
+
+  final formKey = GlobalKey<FormState>();
+  //MyFormValidator basicValidator = MyFormValidator();
 
   gettingList(bool darkStatus) {
     List<NewsFeedsArticleListModel> list = [];
@@ -44,4 +48,11 @@ class NewsFeedsArticlesProvider extends ChangeNotifier {
     print(value);
     notifyListeners();
   }
+
+  onSubmitBasicForm() {
+    if (formKey.currentState!.validate()) {
+
+    }
+  }
+
 }

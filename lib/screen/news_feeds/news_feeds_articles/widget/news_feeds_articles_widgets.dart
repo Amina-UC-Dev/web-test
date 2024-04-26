@@ -8,6 +8,7 @@ import 'package:beonchat_admin/widget/dialog/dialog.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex_item.dart';
 import 'package:beonchat_admin/widget/table/table.dart';
+import 'package:beonchat_admin/widget/textfield/textfield.dart';
 import 'package:beonchat_admin/widget/util/my_button.dart';
 import 'package:beonchat_admin/widget/util/my_card.dart';
 import 'package:beonchat_admin/widget/util/my_container.dart';
@@ -34,7 +35,7 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(16, 16, 16, 5),
+              padding: MySpacing.fromLTRB(16, 16, 16, 5),
               child: MyFlex(
                 runAlignment: WrapAlignment.start,
                 wrapAlignment: WrapAlignment.start,
@@ -113,32 +114,6 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
                               )),
                         ),
                         MyButton(
-                          onPressed: () {
-                            DialogWidget().show(
-                                context: context,
-                                dark: dark,
-                                title: "Form Title",
-                                content: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("asasdasdasd"),
-                                  ],
-                                ));
-                          },
-                          elevation: 0,
-                          padding: MySpacing.xy(20, 16),
-                          backgroundColor: Colours().info,
-                          borderRadiusAll: 6,
-                          child: Text("form",
-                              style: Styles().text(
-                                textType: MyTextType.bodySmall,
-                                color: Colours().white,
-                                fontW: FontWeight.w400,
-                                size: 13,
-                              )),
-                        ),
-                        MyButton(
                           onPressed: () {},
                           elevation: 0,
                           padding: MySpacing.xy(20, 16),
@@ -153,7 +128,14 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
                               )),
                         ),
                         MyButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            DialogWidget().show(
+                              context: context,
+                              dark: dark,
+                              title: "Add Article",
+                              content: FormDummy(dark: dark),
+                            );
+                          },
                           elevation: 0,
                           padding: MySpacing.xy(20, 16),
                           backgroundColor: Colours().success,
@@ -176,46 +158,11 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
             MySpacing.height(12),
             NewsFeedsArticlesFilterWidget(dark: dark),
 
-            /*Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("first name",
-                    style: Styles().text(
-                      textType: MyTextType.labelMedium,
-                      color: Colours().appBarOnBgColor(dark),
-                      fontW: FontWeight.w400,
-                      size: 13,
-                    )),
-                MySpacing.height(8),
-                TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "First Name",
-                      hintStyle: Styles().text(
-                        textType: MyTextType.bodySmall,
-                        color: Colours().appBarOnBgColor(dark),
-                        fontW: FontWeight.w400,
-                        size: 13,
-                      ),
-                      border: outlineInputBorder(dark),
-                      enabledBorder: outlineInputBorder(dark),
-                      focusedBorder: focusedInputBorder,
-                      contentPadding: MySpacing.all(16),
-                      isCollapsed: true,
-                      floatingLabelBehavior: FloatingLabelBehavior.never),
-                ),
-              ],
-            ),*/
-
             // DATA TABLE
             MySpacing.height(12),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: newsFeedsPro.newsFeedsArticleListData != null
-                  ? NewsFeedsArticlesDataTableWidget(
-                      dark: dark,
-                      type: type,
-                    )
-                  : Container(),
+              padding: MySpacing.x(16),
+              child: newsFeedsPro.newsFeedsArticleListData != null ? NewsFeedsArticlesDataTableWidget(dark: dark) : Container(),
             ),
             MySpacing.height(40),
           ],
@@ -234,7 +181,7 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<NewsFeedsArticlesProvider>(builder: (_, newsFeedsPro, __) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25),
+        padding: MySpacing.x(25),
         child: MyFlex(
           runAlignment: WrapAlignment.start,
           wrapAlignment: WrapAlignment.start,
@@ -250,56 +197,43 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "label here",
-                        style: Styles().text(
-                          textType: MyTextType.titleMedium,
-                          color: Colours().blue,
-                          fontW: FontWeight.w400,
-                          size: 10,
-                        ),
-                      ),
-                      MySpacing.height(5),
-                      PopupMenuButton(
-                          onSelected: newsFeedsPro.onChangeLabelType,
-                          itemBuilder: (BuildContext context) {
-                            return newsFeedsPro.listOption.map((option) {
-                              return PopupMenuItem(
+                      InputLabel(label: "label here", dark: dark),
+                      DropdownButtonFormField(
+                          dropdownColor: Colours().white,
+                          menuMaxHeight: 200,
+                          isExpanded: true,
+                          items: newsFeedsPro.listOption
+                              .map((option) => DropdownMenuItem(
                                   value: option,
-                                  height: 32,
                                   child: Text(option["name"],
                                       maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: Styles().text(
                                         textType: MyTextType.bodySmall,
                                         color: Colours().appBarOnBgColor(dark),
                                         fontW: FontWeight.w400,
                                         size: 13,
-                                      )));
-                            }).toList();
-                          },
-                          color: Colours().cardColor(dark),
-                          child: MyContainer.bordered(
-                            padding: MySpacing.xy(12, 8),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Text(newsFeedsPro.selectdOpitonValue,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Styles().text(
-                                        textType: MyTextType.labelMedium,
-                                        color: Colours().appBarOnBgColor(dark),
-                                        fontW: FontWeight.w400,
-                                        size: 13,
-                                      )),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(left: 4),
-                                  child: Icon(LucideIcons.chevronDown, size: 22, color: Colours().appBarOnBgColor(dark)),
-                                )
-                              ],
-                            ),
-                          )),
+                                      ))))
+                              .toList(),
+                          icon: const Icon(
+                            LucideIcons.chevronDown,
+                            size: 20,
+                          ),
+                          decoration: InputDecoration(
+                              hintText: "select",
+                              hintStyle: Styles().text(
+                                textType: MyTextType.labelMedium,
+                                color: Colours().appBarOnBgColor(dark),
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ),
+                              border: outlineInputBorder(dark),
+                              enabledBorder: outlineInputBorder(dark),
+                              focusedBorder: focusedInputBorder,
+                              contentPadding: MySpacing.all(16),
+                              isCollapsed: true,
+                              floatingLabelBehavior: FloatingLabelBehavior.never),
+                          onChanged: newsFeedsPro.onChangeLabelType)
                     ],
                   )),
             MyFlexItem(
@@ -350,10 +284,9 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
 }
 
 class NewsFeedsArticlesDataTableWidget extends StatelessWidget {
-  const NewsFeedsArticlesDataTableWidget({super.key, required this.dark, required this.type});
+  const NewsFeedsArticlesDataTableWidget({super.key, required this.dark});
 
   final bool dark;
-  final int type;
 
   @override
   Widget build(BuildContext context) {
@@ -455,6 +388,397 @@ class NewsFeedsArticleDataTableSource extends DataTableSource {
                 ),
               )),
         )
+      ],
+    );
+  }
+}
+
+class FormDummy extends StatelessWidget {
+  const FormDummy({super.key, required this.dark});
+
+  final bool dark;
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<NewsFeedsArticlesProvider>(builder: (_, newsFeedsPro, __) {
+      return Form(
+        key: newsFeedsPro.formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            //////////////////////////
+            MyFlex(
+              runSpacing: 15,
+              children: [
+                ////////////////////////////
+                MyFlexItem(
+                    sizes: "md-6 lg-6",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputLabel(label: "select type", dark: dark, isRequired: true),
+                        DropdownButtonFormField(
+                          dropdownColor: Colours().white,
+                          menuMaxHeight: 200,
+                          isExpanded: true,
+                          items: newsFeedsPro.listOption
+                              .map((option) => DropdownMenuItem(
+                                  value: option,
+                                  child: Text(option["name"],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Styles().text(
+                                        textType: MyTextType.bodySmall,
+                                        color: Colours().appBarOnBgColor(dark),
+                                        fontW: FontWeight.w400,
+                                        size: 13,
+                                      ))))
+                              .toList(),
+                          icon: const Icon(
+                            LucideIcons.chevronDown,
+                            size: 20,
+                          ),
+                          decoration: InputDecoration(
+                              hintText: "select",
+                              hintStyle: Styles().text(
+                                textType: MyTextType.labelMedium,
+                                color: Colours().appBarOnBgColor(dark),
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ),
+                              border: outlineInputBorder(dark),
+                              enabledBorder: outlineInputBorder(dark),
+                              focusedBorder: focusedInputBorder,
+                              contentPadding: MySpacing.all(16),
+                              isCollapsed: true,
+                              floatingLabelBehavior: FloatingLabelBehavior.never),
+                          onChanged: newsFeedsPro.onChangeLabelType,
+                          validator: (val) {
+                            if (val == null) {
+                              return "";
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    )),
+
+                ////////////////////////////
+                MyFlexItem(
+                    sizes: "md-6 lg-6",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputLabel(label: "select category", dark: dark, isRequired: true),
+                        TextFormField(
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "";
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              hintText: "0",
+                              hintStyle: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().grey4,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ),
+                              border: outlineInputBorder(dark),
+                              enabledBorder: outlineInputBorder(dark),
+                              focusedBorder: focusedInputBorder,
+                              contentPadding: MySpacing.all(16),
+                              isCollapsed: true,
+                              floatingLabelBehavior: FloatingLabelBehavior.never),
+                        ),
+                      ],
+                    )),
+
+                ////////////////////////////
+                MyFlexItem(
+                    sizes: "md-6 lg-6",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputLabel(label: "select status", dark: dark, isRequired: true),
+                        TextFormField(
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "";
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              hintText: "0",
+                              hintStyle: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().grey4,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ),
+                              border: outlineInputBorder(dark),
+                              enabledBorder: outlineInputBorder(dark),
+                              focusedBorder: focusedInputBorder,
+                              contentPadding: MySpacing.all(16),
+                              isCollapsed: true,
+                              floatingLabelBehavior: FloatingLabelBehavior.never),
+                        ),
+                      ],
+                    )),
+
+                MyFlexItem(
+                  sizes: "md-6 lg-6",
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InputLabel(label: "date", dark: dark, isRequired: true),
+                      MyFlex(
+                        spacing: 0,
+                        runSpacing: 8,
+                        children: [
+                          MyFlexItem(
+                            sizes: "lg-6",
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  hintText: "day",
+                                  hintStyle: Styles().text(
+                                    textType: MyTextType.bodySmall,
+                                    color: Colours().grey4,
+                                    fontW: FontWeight.w400,
+                                    size: 13,
+                                  ),
+                                  border: outlineInputBorder(dark),
+                                  enabledBorder: outlineInputBorder(dark),
+                                  focusedBorder: focusedInputBorder,
+                                  contentPadding: MySpacing.all(16),
+                                  isCollapsed: true,
+                                  floatingLabelBehavior: FloatingLabelBehavior.never),
+                            ),
+                          ),
+                          MyFlexItem(sizes: "lg-1", child: Container()),
+                          MyFlexItem(
+                            sizes: "lg-5",
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  hintText: "day",
+                                  hintStyle: Styles().text(
+                                    textType: MyTextType.bodySmall,
+                                    color: Colours().grey4,
+                                    fontW: FontWeight.w400,
+                                    size: 13,
+                                  ),
+                                  border: outlineInputBorder(dark),
+                                  enabledBorder: outlineInputBorder(dark),
+                                  focusedBorder: focusedInputBorder,
+                                  contentPadding: MySpacing.all(16),
+                                  isCollapsed: true,
+                                  floatingLabelBehavior: FloatingLabelBehavior.never),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                ///////////////////////////////////////////////////
+                MyFlexItem(
+                    sizes: "lg-12",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputLabel(label: "title", dark: dark, isRequired: true),
+                        TextFormField(
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "";
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              hintText: "title / name",
+                              hintStyle: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().grey4,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ),
+                              border: outlineInputBorder(dark),
+                              enabledBorder: outlineInputBorder(dark),
+                              focusedBorder: focusedInputBorder,
+                              contentPadding: MySpacing.all(16),
+                              isCollapsed: true,
+                              floatingLabelBehavior: FloatingLabelBehavior.never),
+                        ),
+                      ],
+                    )),
+
+                ////////////////////////////
+                MyFlexItem(
+                    sizes: "lg-12",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputLabel(label: "description", dark: dark, isRequired: true),
+                        TextFormField(
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "";
+                            }
+                            return null;
+                          },
+                          maxLines: 4,
+                          decoration: InputDecoration(
+                              hintText: "type here...",
+                              hintStyle: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().grey4,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ),
+                              border: outlineInputBorder(dark),
+                              enabledBorder: outlineInputBorder(dark),
+                              focusedBorder: focusedInputBorder,
+                              contentPadding: MySpacing.all(16),
+                              isCollapsed: true,
+                              floatingLabelBehavior: FloatingLabelBehavior.never),
+                        ),
+                      ],
+                    )),
+
+                //////////////////////////////
+                MyFlexItem(
+                    sizes: "md-6 lg-6",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputLabel(label: "sort order", dark: dark),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              hintText: "0",
+                              hintStyle: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().grey4,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ),
+                              border: outlineInputBorder(dark),
+                              enabledBorder: outlineInputBorder(dark),
+                              focusedBorder: focusedInputBorder,
+                              contentPadding: MySpacing.all(16),
+                              isCollapsed: true,
+                              floatingLabelBehavior: FloatingLabelBehavior.never),
+                        ),
+                      ],
+                    )),
+
+                //////////////////////////////
+                MyFlexItem(
+                    sizes: "md-6 lg-6",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputLabel(label: "password", dark: dark),
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          //obscureText: !controller.showPassword,
+                          decoration: InputDecoration(
+                              hintText: "Sample Password",
+                              hintStyle: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().grey4,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              ),
+                              border: outlineInputBorder(dark),
+                              enabledBorder: outlineInputBorder(dark),
+                              focusedBorder: focusedInputBorder,
+                              prefixIcon: const Icon(LucideIcons.lock, size: 20),
+                              suffixIcon: InkWell(
+                                onTap: () {},
+                                child: Icon(LucideIcons.eye, size: 20),
+                              ),
+                              contentPadding: MySpacing.all(16),
+                              isCollapsed: true,
+                              floatingLabelBehavior: FloatingLabelBehavior.never),
+                        ),
+                        // LucideIcons.eyeOff
+                      ],
+                    ))
+              ],
+            ),
+
+            MySpacing.height(40),
+            const Divider(height: 0, thickness: 1),
+            MySpacing.height(20),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                MyButton(
+                  onPressed: () {
+                    newsFeedsPro.onSubmitBasicForm();
+                    //Navigator.pop(context);
+                  },
+                  elevation: 0,
+                  padding: MySpacing.xy(20, 16),
+                  backgroundColor: Colours().blue,
+                  borderRadiusAll: 6,
+                  child: Text("submit",
+                      style: Styles().text(
+                        textType: MyTextType.bodySmall,
+                        color: Colours().white,
+                        fontW: FontWeight.w400,
+                        size: 13,
+                      )),
+                ),
+              ],
+            )
+          ],
+        ),
+      );
+    });
+  }
+}
+
+class InputLabel extends StatelessWidget {
+  const InputLabel({super.key, required this.label, this.isRequired, required this.dark});
+
+  final String label;
+  final bool? isRequired;
+  final bool dark;
+
+  @override
+  Widget build(BuildContext context) {
+    bool isRequiredField = isRequired ?? false;
+
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(label,
+                style: Styles().text(
+                  textType: MyTextType.titleMedium,
+                  color: Colours().blue,
+                  fontW: FontWeight.w400,
+                  size: 12,
+                )),
+            isRequiredField
+                ? Text(" *",
+                    style: Styles().text(
+                      textType: MyTextType.labelMedium,
+                      color: Colours().red,
+                      fontW: FontWeight.w400,
+                      size: 13,
+                    ))
+                : Container(),
+          ],
+        ),
+        MySpacing.height(5),
       ],
     );
   }

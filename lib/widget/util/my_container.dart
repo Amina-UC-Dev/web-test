@@ -1,6 +1,7 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
 import 'package:beonchat_admin/widget/util/constant_data.dart';
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -166,7 +167,7 @@ class MyContainer extends StatelessWidget {
         width: width,
         height: height,
         alignment: alignment,
-        margin: margin ?? EdgeInsets.all(marginAll ?? 0),
+        margin: margin ?? MySpacing.all(marginAll ?? 0),
         decoration: BoxDecoration(
             color: color ?? Colours().cardColor(theme.darkTheme),
             shape: shape,
@@ -184,7 +185,7 @@ class MyContainer extends StatelessWidget {
                             Colours().dividerColor(theme.darkTheme),
                         width: 1)
                 : null),
-        padding: padding ?? EdgeInsets.all(paddingAll ?? 16),
+        padding: padding ?? MySpacing.all(paddingAll ?? 16),
         clipBehavior: clipBehavior ?? Clip.none,
         child: child,
       );

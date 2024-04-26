@@ -34,7 +34,7 @@ class DashboardCampaignReportWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: MySpacing.all(16),
               child: Text(
                 'Campaign Report',
                 style: Styles().text(
@@ -48,7 +48,7 @@ class DashboardCampaignReportWidget extends StatelessWidget {
             const Divider(),
             MySpacing.height(12),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: MySpacing.x(20),
               child: SfCartesianChart(
                 //title: ChartTitle(text: 'Campaign Report'),
                 plotAreaBorderWidth: 0,
@@ -68,13 +68,17 @@ class DashboardCampaignReportWidget extends StatelessWidget {
                   axisLine: const AxisLine(width: 0),
                   majorTickLines: const MajorTickLines(size: 0),
                 ),
-                series: getDefaultNumericSeries(dashPro.dashboarChartCampaignReport),
-                tooltipBehavior: TooltipBehavior(enable: true, format: 'Score: point.y', canShowMarker: false),
+                series: getDefaultNumericSeries(
+                    dashPro.dashboarChartCampaignReport),
+                tooltipBehavior: TooltipBehavior(
+                    enable: true,
+                    format: 'Score: point.y',
+                    canShowMarker: false),
               ),
             ),
             MySpacing.height(12),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
+              padding: MySpacing.x(50),
               child: MyFlex(
                 runAlignment: WrapAlignment.start,
                 wrapCrossAlignment: WrapCrossAlignment.start,
@@ -105,23 +109,28 @@ class DashboardCampaignReportWidget extends StatelessWidget {
     });
   }
 
-  List<ColumnSeries<DashboarChartCampaignReport, num>> getDefaultNumericSeries(List<DashboarChartCampaignReport> listData) {
+  List<ColumnSeries<DashboarChartCampaignReport, num>> getDefaultNumericSeries(
+      List<DashboarChartCampaignReport> listData) {
     return <ColumnSeries<DashboarChartCampaignReport, num>>[
       // clicks
       ColumnSeries<DashboarChartCampaignReport, num>(
           name: 'clicks',
           dataSource: listData,
           color: const Color.fromRGBO(78, 115, 223, 1),
-          xValueMapper: (DashboarChartCampaignReport campaign, _) => campaign.xId as num,
-          yValueMapper: (DashboarChartCampaignReport campaign, _) => campaign.clicks),
+          xValueMapper: (DashboarChartCampaignReport campaign, _) =>
+              campaign.xId as num,
+          yValueMapper: (DashboarChartCampaignReport campaign, _) =>
+              campaign.clicks),
 
       // user signup
       ColumnSeries<DashboarChartCampaignReport, num>(
         name: 'user signup',
         dataSource: listData,
         color: const Color.fromRGBO(28, 200, 138, 1),
-        xValueMapper: (DashboarChartCampaignReport campaign, _) => campaign.xId as num,
-        yValueMapper: (DashboarChartCampaignReport campaign, _) => campaign.usersignup,
+        xValueMapper: (DashboarChartCampaignReport campaign, _) =>
+            campaign.xId as num,
+        yValueMapper: (DashboarChartCampaignReport campaign, _) =>
+            campaign.usersignup,
       ),
 
       // company signup
@@ -129,8 +138,10 @@ class DashboardCampaignReportWidget extends StatelessWidget {
         name: 'company signup',
         dataSource: listData,
         color: const Color.fromRGBO(54, 185, 204, 1),
-        xValueMapper: (DashboarChartCampaignReport campaign, _) => campaign.xId as num,
-        yValueMapper: (DashboarChartCampaignReport campaign, _) => campaign.companysignup,
+        xValueMapper: (DashboarChartCampaignReport campaign, _) =>
+            campaign.xId as num,
+        yValueMapper: (DashboarChartCampaignReport campaign, _) =>
+            campaign.companysignup,
       ),
 
       // app downloads
@@ -138,8 +149,10 @@ class DashboardCampaignReportWidget extends StatelessWidget {
         name: 'app downloads',
         dataSource: listData,
         color: const Color.fromRGBO(246, 194, 62, 1),
-        xValueMapper: (DashboarChartCampaignReport campaign, _) => campaign.xId as num,
-        yValueMapper: (DashboarChartCampaignReport campaign, _) => campaign.appdownloads,
+        xValueMapper: (DashboarChartCampaignReport campaign, _) =>
+            campaign.xId as num,
+        yValueMapper: (DashboarChartCampaignReport campaign, _) =>
+            campaign.appdownloads,
       ),
     ];
   }
@@ -162,7 +175,7 @@ class DashboardActiveUsersWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: MySpacing.all(16),
               child: Text(
                 'Active Users (last 7days)',
                 style: Styles().text(
@@ -190,27 +203,40 @@ class DashboardActiveUsersWidget extends StatelessWidget {
                           explode: true,
                           explodeOffset: '10%',
                           dataSource: dashPro.dashboardChartActiveUsers,
-                          pointColorMapper: (DashboardChartActiveUsers data, _) => data.pointColor,
-                          xValueMapper: (DashboardChartActiveUsers data, _) => data.name,
-                          yValueMapper: (DashboardChartActiveUsers data, _) => data.counter,
-                          dataLabelSettings: const DataLabelSettings(isVisible: true)),
+                          pointColorMapper:
+                              (DashboardChartActiveUsers data, _) =>
+                                  data.pointColor,
+                          xValueMapper: (DashboardChartActiveUsers data, _) =>
+                              data.name,
+                          yValueMapper: (DashboardChartActiveUsers data, _) =>
+                              data.counter,
+                          dataLabelSettings:
+                              const DataLabelSettings(isVisible: true)),
                     ],
                   ),
                 ),
                 MyFlexItem(
                   sizes: "lg-6",
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    padding: MySpacing.x(50),
                     child: Column(
                       children: [
                         MySpacing.height(12),
-                        buildCircleChartData(const Color.fromRGBO(9, 143, 251, 1), "ios", dark),
+                        buildCircleChartData(
+                            const Color.fromRGBO(9, 143, 251, 1), "ios", dark),
                         MySpacing.height(8),
-                        buildCircleChartData(const Color.fromRGBO(0, 227, 150, 1), "android", dark),
+                        buildCircleChartData(
+                            const Color.fromRGBO(0, 227, 150, 1),
+                            "android",
+                            dark),
                         MySpacing.height(8),
-                        buildCircleChartData(const Color.fromRGBO(254, 176, 25, 1), "huawei", dark),
+                        buildCircleChartData(
+                            const Color.fromRGBO(254, 176, 25, 1),
+                            "huawei",
+                            dark),
                         MySpacing.height(8),
-                        buildCircleChartData(const Color.fromRGBO(225, 69, 96, 1), "web", dark),
+                        buildCircleChartData(
+                            const Color.fromRGBO(225, 69, 96, 1), "web", dark),
                       ],
                     ),
                   ),
@@ -255,7 +281,7 @@ class DashboardTodayUserRegisteredWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: MySpacing.all(16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -284,7 +310,7 @@ class DashboardTodayUserRegisteredWidget extends StatelessWidget {
             MySpacing.height(12),
             Center(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 10, 16, 35),
+                padding: MySpacing.fromLTRB(16, 10, 16, 35),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: MyContainer.bordered(
@@ -292,7 +318,8 @@ class DashboardTodayUserRegisteredWidget extends StatelessWidget {
                     child: DataTable(
                         sortAscending: true,
                         onSelectAll: (_) => {},
-                        headingRowColor: MaterialStatePropertyAll(Colours().appBarOnBgColor(!dark)),
+                        headingRowColor: MaterialStatePropertyAll(
+                            Colours().appBarOnBgColor(!dark)),
                         dataRowHeight: 50,
                         columnSpacing: 35,
                         columns: [
@@ -347,7 +374,7 @@ class DashboardCompanyRegisteredWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: MySpacing.all(16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -376,7 +403,7 @@ class DashboardCompanyRegisteredWidget extends StatelessWidget {
             MySpacing.height(12),
             Center(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 10, 16, 35),
+                padding: MySpacing.fromLTRB(16, 10, 16, 35),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: MyContainer.bordered(
@@ -384,7 +411,8 @@ class DashboardCompanyRegisteredWidget extends StatelessWidget {
                     child: DataTable(
                         sortAscending: true,
                         onSelectAll: (_) => {},
-                        headingRowColor: MaterialStatePropertyAll(Colours().appBarOnBgColor(!dark)),
+                        headingRowColor: MaterialStatePropertyAll(
+                            Colours().appBarOnBgColor(!dark)),
                         dataRowHeight: 50,
                         columnSpacing: 35,
                         columns: [
@@ -439,7 +467,7 @@ class DashboardPendingUserWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: MySpacing.all(16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -468,7 +496,7 @@ class DashboardPendingUserWidget extends StatelessWidget {
             MySpacing.height(12),
             Center(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 10, 16, 35),
+                padding: MySpacing.fromLTRB(16, 10, 16, 35),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: MyContainer.bordered(
@@ -476,7 +504,8 @@ class DashboardPendingUserWidget extends StatelessWidget {
                     child: DataTable(
                         sortAscending: true,
                         onSelectAll: (_) => {},
-                        headingRowColor: MaterialStatePropertyAll(Colours().appBarOnBgColor(!dark)),
+                        headingRowColor: MaterialStatePropertyAll(
+                            Colours().appBarOnBgColor(!dark)),
                         dataRowHeight: 50,
                         columnSpacing: 35,
                         columns: [
@@ -531,7 +560,7 @@ class DashboardPendingCompanyWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: MySpacing.all(16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -560,7 +589,7 @@ class DashboardPendingCompanyWidget extends StatelessWidget {
             MySpacing.height(12),
             Center(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 10, 16, 35),
+                padding: MySpacing.fromLTRB(16, 10, 16, 35),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: MyContainer.bordered(
@@ -568,7 +597,8 @@ class DashboardPendingCompanyWidget extends StatelessWidget {
                     child: DataTable(
                         sortAscending: true,
                         onSelectAll: (_) => {},
-                        headingRowColor: MaterialStatePropertyAll(Colours().appBarOnBgColor(!dark)),
+                        headingRowColor: MaterialStatePropertyAll(
+                            Colours().appBarOnBgColor(!dark)),
                         dataRowHeight: 50,
                         columnSpacing: 35,
                         columns: [

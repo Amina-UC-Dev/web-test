@@ -4,6 +4,7 @@ import 'package:beonchat_admin/widget/responsive/my_responsive.dart';
 import 'package:beonchat_admin/widget/responsive/my_screen_media.dart';
 import 'package:beonchat_admin/widget/responsive/my_screen_media_types.dart';
 import 'package:beonchat_admin/widget/responsive/responsive.dart';
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
 
 class MyFlex extends StatelessWidget {
@@ -28,9 +29,9 @@ class MyFlex extends StatelessWidget {
 
   getPadding(index, length) {
     if (contentPadding) {
-      return EdgeInsets.symmetric(horizontal: (spacing ?? flexSpacing) / 2);
+      return MySpacing.x((spacing ?? flexSpacing) / 2);
     } else {
-      return EdgeInsets.fromLTRB(index == 0 ? 0 : (spacing ?? flexSpacing) / 2,
+      return MySpacing.fromLTRB(index == 0 ? 0 : (spacing ?? flexSpacing) / 2,
           0, index == length - 1 ? 0 : (spacing ?? flexSpacing) / 2, 0);
     }
   }
