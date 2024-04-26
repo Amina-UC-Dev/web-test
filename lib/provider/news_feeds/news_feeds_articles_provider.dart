@@ -2,8 +2,15 @@ import 'package:beonchat_admin/model/news_feeds/news_feeds_articles_all_model.da
 import 'package:beonchat_admin/screen/news_feeds/news_feeds_articles/widget/news_feeds_articles_widgets.dart';
 import 'package:beonchat_admin/widget/util/my_form_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:intl/intl.dart';
 
 class NewsFeedsArticlesProvider extends ChangeNotifier {
+  DateFormat dateFormatter = DateFormat('dd/MM/yyyy');
+  DateFormat timeFormatter = DateFormat('jms');
+
+  DateTime? selectedDate;
+  TimeOfDay? selectedTime;
   bool themeDarkStatus = true;
 
   DataTableSource? newsFeedsArticleListData;
@@ -17,6 +24,7 @@ class NewsFeedsArticlesProvider extends ChangeNotifier {
   ];
 
   final formKey = GlobalKey<FormState>();
+
   //MyFormValidator basicValidator = MyFormValidator();
 
   gettingList(bool darkStatus) {
@@ -50,9 +58,26 @@ class NewsFeedsArticlesProvider extends ChangeNotifier {
   }
 
   onSubmitBasicForm() {
-    if (formKey.currentState!.validate()) {
+    if (formKey.currentState!.validate()) {}
+  }
 
+  Future<void> pickDate(BuildContext context) async {
+    final DateTime? picked =
+        await showDatePicker(context: context, initialDate: selectedDate ?? DateTime.now(), firstDate: DateTime(2015, 8), lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      selectedDate = picked;
+      notifyListeners();
     }
   }
 
+  Future<void> pickTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: selectedTime ?? TimeOfDay.now(),
+    );
+    if (picked != null && picked != selectedTime) {
+      selectedTime = picked;
+      notifyListeners();
+    }
+  }
 }

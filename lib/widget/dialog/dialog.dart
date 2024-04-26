@@ -28,41 +28,43 @@ class DialogWidget {
         return Dialog(
           child: SizedBox(
             width: sizeDialog,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: MySpacing.all(16),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: Text(title!,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Styles().text(
-                                textType: MyTextType.labelLarge,
-                                color: Colours().appBarOnBgColor(dark),
-                                fontW: FontWeight.w600,
-                                size: 16,
-                              ))),
-                      InkWell(
-                        onTap: () => Navigator.pop(context),
-                        child: Icon(
-                          LucideIcons.x,
-                          size: 20,
-                          color: Colours().grey3,
-                        ),
-                      )
-                    ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: MySpacing.all(16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Text(title!,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Styles().text(
+                                  textType: MyTextType.labelLarge,
+                                  color: Colours().appBarOnBgColor(dark),
+                                  fontW: FontWeight.w600,
+                                  size: 16,
+                                ))),
+                        InkWell(
+                          onTap: () => Navigator.pop(ctx),
+                          child: Icon(
+                            LucideIcons.x,
+                            size: 20,
+                            color: Colours().grey3,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                const Divider(height: 0, thickness: 1),
-                Padding(
-                  padding: MySpacing.xy(15, 20),
-                  child: content,
-                ),
-              ],
+                  const Divider(height: 0, thickness: 1),
+                  Padding(
+                    padding: MySpacing.xy(15, 20),
+                    child: content,
+                  ),
+                ],
+              ),
             ),
           ),
         );

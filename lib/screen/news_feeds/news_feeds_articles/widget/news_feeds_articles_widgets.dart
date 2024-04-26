@@ -9,6 +9,7 @@ import 'package:beonchat_admin/widget/responsive/my_flex.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex_item.dart';
 import 'package:beonchat_admin/widget/table/table.dart';
 import 'package:beonchat_admin/widget/textfield/textfield.dart';
+import 'package:beonchat_admin/widget/util/date_time_extention.dart';
 import 'package:beonchat_admin/widget/util/my_button.dart';
 import 'package:beonchat_admin/widget/util/my_card.dart';
 import 'package:beonchat_admin/widget/util/my_container.dart';
@@ -540,41 +541,57 @@ class FormDummy extends StatelessWidget {
                         children: [
                           MyFlexItem(
                             sizes: "lg-6",
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  hintText: "day",
-                                  hintStyle: Styles().text(
-                                    textType: MyTextType.bodySmall,
-                                    color: Colours().grey4,
-                                    fontW: FontWeight.w400,
-                                    size: 13,
-                                  ),
-                                  border: outlineInputBorder(dark),
-                                  enabledBorder: outlineInputBorder(dark),
-                                  focusedBorder: focusedInputBorder,
-                                  contentPadding: MySpacing.all(16),
-                                  isCollapsed: true,
-                                  floatingLabelBehavior: FloatingLabelBehavior.never),
+                            child: MyButton.outlined(
+                              onPressed: () {
+                                newsFeedsPro.pickDate(context);
+                              },
+                              borderColor: Colours().blue,
+                              padding: MySpacing.xy(16, 20),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Icon(LucideIcons.calendar, color: Colours().blue, size: 18),
+                                  MySpacing.width(10),
+                                  Text(
+                                      newsFeedsPro.selectedDate != null
+                                          ? newsFeedsPro.dateFormatter.format(newsFeedsPro.selectedDate!)
+                                          : "select date",
+                                      style: Styles().text(
+                                        textType: MyTextType.labelMedium,
+                                        color: Colours().blue,
+                                        fontW: FontWeight.w400,
+                                        size: 12,
+                                      )),
+                                ],
+                              ),
                             ),
                           ),
                           MyFlexItem(sizes: "lg-1", child: Container()),
                           MyFlexItem(
                             sizes: "lg-5",
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  hintText: "day",
-                                  hintStyle: Styles().text(
-                                    textType: MyTextType.bodySmall,
-                                    color: Colours().grey4,
-                                    fontW: FontWeight.w400,
-                                    size: 13,
-                                  ),
-                                  border: outlineInputBorder(dark),
-                                  enabledBorder: outlineInputBorder(dark),
-                                  focusedBorder: focusedInputBorder,
-                                  contentPadding: MySpacing.all(16),
-                                  isCollapsed: true,
-                                  floatingLabelBehavior: FloatingLabelBehavior.never),
+                            child: MyButton.outlined(
+                              onPressed: () {
+                                newsFeedsPro.pickTime(context);
+                              },
+                              borderColor: Colours().blue,
+                              padding: MySpacing.xy(16, 20),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Icon(LucideIcons.clock4, color: Colours().blue, size: 18),
+                                  MySpacing.width(10),
+                                  Text(
+                                      newsFeedsPro.selectedTime != null
+                                          ? newsFeedsPro.timeFormatter.format(DateTime.now().applied(newsFeedsPro.selectedTime!))
+                                          : "select time",
+                                      style: Styles().text(
+                                        textType: MyTextType.labelMedium,
+                                        color: Colours().blue,
+                                        fontW: FontWeight.w400,
+                                        size: 12,
+                                      )),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -680,12 +697,12 @@ class FormDummy extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        InputLabel(label: "password", dark: dark),
+                        InputLabel(label: "sample password", dark: dark),
                         TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           //obscureText: !controller.showPassword,
                           decoration: InputDecoration(
-                              hintText: "Sample Password",
+                              hintText: "Password",
                               hintStyle: Styles().text(
                                 textType: MyTextType.bodySmall,
                                 color: Colours().grey4,
