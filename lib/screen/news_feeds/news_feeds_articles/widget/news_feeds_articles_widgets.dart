@@ -3,16 +3,18 @@ import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/model/news_feeds/news_feeds_articles_all_model.dart';
 import 'package:beonchat_admin/provider/news_feeds/news_feeds_articles_provider.dart';
+import 'package:beonchat_admin/widget/dialog/alert.dart';
+import 'package:beonchat_admin/widget/dialog/dialog.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex_item.dart';
 import 'package:beonchat_admin/widget/table/table.dart';
-import 'package:beonchat_admin/widget/textfield/textfield.dart';
 import 'package:beonchat_admin/widget/util/my_button.dart';
 import 'package:beonchat_admin/widget/util/my_card.dart';
 import 'package:beonchat_admin/widget/util/my_container.dart';
 import 'package:beonchat_admin/widget/util/my_shadow.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:provider/provider.dart';
 
 class NewsFeedsArticlesListWidget extends StatelessWidget {
@@ -42,7 +44,7 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
                 runSpacing: 0,
                 children: [
                   MyFlexItem(
-                    sizes: "md-8 lg-9",
+                    sizes: "md-8 lg-6",
                     child: Text(
                       'Articles',
                       style: Styles().text(
@@ -54,7 +56,7 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
                     ),
                   ),
                   MyFlexItem(
-                    sizes: "md-4 lg-3",
+                    sizes: "md-4 lg-6",
                     child: Wrap(
                       runAlignment: WrapAlignment.start,
                       alignment: WrapAlignment.end,
@@ -64,8 +66,80 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
                       children: [
                         MyButton(
                           onPressed: () {
-                            AlertDialog().show(context: context);
+                            AlertWidget().show(
+                              context: context,
+                              dark: dark,
+                              title: "alert title",
+                              message:
+                                  " this is message content this is message content this is message content this is message content this is message content this is message content",
+                            );
                           },
+                          elevation: 0,
+                          padding: MySpacing.xy(20, 16),
+                          backgroundColor: Colours().warning,
+                          borderRadiusAll: 6,
+                          child: Text("alert",
+                              style: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().white,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              )),
+                        ),
+                        MyButton(
+                          onPressed: () {
+                            ConfirmWidget().show(
+                              context: context,
+                              dark: dark,
+                              title: "confirm  title",
+                              message: "are you sure you want to delete?",
+                              buttonTextFalse: "cancel",
+                              buttonTextTrue: "confirm",
+                              funcTrue: () {
+                                Navigator.pop(context);
+                              },
+                            );
+                          },
+                          elevation: 0,
+                          padding: MySpacing.xy(20, 16),
+                          backgroundColor: Colours().danger,
+                          borderRadiusAll: 6,
+                          child: Text("confirm",
+                              style: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().white,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              )),
+                        ),
+                        MyButton(
+                          onPressed: () {
+                            DialogWidget().show(
+                                context: context,
+                                dark: dark,
+                                title: "Form Title",
+                                content: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("asasdasdasd"),
+                                  ],
+                                ));
+                          },
+                          elevation: 0,
+                          padding: MySpacing.xy(20, 16),
+                          backgroundColor: Colours().info,
+                          borderRadiusAll: 6,
+                          child: Text("form",
+                              style: Styles().text(
+                                textType: MyTextType.bodySmall,
+                                color: Colours().white,
+                                fontW: FontWeight.w400,
+                                size: 13,
+                              )),
+                        ),
+                        MyButton(
+                          onPressed: () {},
                           elevation: 0,
                           padding: MySpacing.xy(20, 16),
                           backgroundColor: Colours().blue,
@@ -221,7 +295,7 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
                                 ),
                                 Container(
                                   margin: const EdgeInsets.only(left: 4),
-                                  child: Icon(Icons.arrow_drop_down, size: 22, color: Colours().appBarOnBgColor(dark)),
+                                  child: Icon(LucideIcons.chevronDown, size: 22, color: Colours().appBarOnBgColor(dark)),
                                 )
                               ],
                             ),
@@ -358,7 +432,7 @@ class NewsFeedsArticleDataTableSource extends DataTableSource {
               },
               color: Colours().cardColor(dark),
               child: MyContainer.bordered(
-                padding: MySpacing.xy(12, 8),
+                padding: MySpacing.xy(10, 7),
                 color: Colours().blue,
                 child: Row(
                   children: [
@@ -370,64 +444,18 @@ class NewsFeedsArticleDataTableSource extends DataTableSource {
                             textType: MyTextType.labelMedium,
                             color: Colours().white,
                             fontW: FontWeight.w400,
-                            size: 13,
+                            size: 12,
                           )),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 4),
-                      child: Icon(Icons.arrow_drop_down, size: 22, color: Colours().white),
+                      child: Icon(LucideIcons.chevronDown, size: 16, color: Colours().white),
                     )
                   ],
                 ),
               )),
         )
       ],
-    );
-  }
-}
-
-class AlertDialog {
-  show({required BuildContext context}) {
-    return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (ctx) {
-        return Dialog(
-          child: SizedBox(
-            width: 400,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: MySpacing.all(16),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: Text("static dialog",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Styles().text(
-                                textType: MyTextType.labelMedium,
-                                color: Colours().white,
-                                fontW: FontWeight.w400,
-                                size: 13,
-                              ))),
-                      InkWell(onTap: () => Navigator.pop(context), child: Text('close'))
-                    ],
-                  ),
-                ),
-                const Divider(height: 0, thickness: 1),
-                Padding(
-                  padding: MySpacing.all(16),
-                  child: Text("asdasdasd"),
-                ),
-                const Divider(height: 0, thickness: 1),
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 }

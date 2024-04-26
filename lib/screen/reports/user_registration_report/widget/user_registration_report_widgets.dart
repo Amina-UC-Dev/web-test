@@ -3,7 +3,6 @@ import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/model/reports/user_registration_all_model.dart';
 import 'package:beonchat_admin/provider/reports/user_registration_report_provider.dart';
-import 'package:beonchat_admin/widget/button/button.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex_item.dart';
 import 'package:beonchat_admin/widget/util/my_button.dart';
@@ -12,6 +11,7 @@ import 'package:beonchat_admin/widget/util/my_container.dart';
 import 'package:beonchat_admin/widget/util/my_shadow.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -128,7 +128,7 @@ class UserRegistartionReportFilterWidget extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: const EdgeInsets.only(left: 4),
-                                    child: Icon(Icons.arrow_drop_down, size: 22, color: Colours().appBarOnBgColor(dark)),
+                                    child: Icon(LucideIcons.chevronDown, size: 22, color: Colours().appBarOnBgColor(dark)),
                                   )
                                 ],
                               ),

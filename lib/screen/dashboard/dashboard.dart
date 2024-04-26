@@ -26,7 +26,7 @@ class DashBoard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
+                padding: MySpacing.x(flexSpacing),
                 child: Text(
                   "Dashboard",
                   style: Styles().text(
@@ -41,7 +41,7 @@ class DashBoard extends StatelessWidget {
               // PROIFLE COUNTERS
               MySpacing.height(flexSpacing),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
+                padding: MySpacing.x(flexSpacing),
                 child: DashboardProfileCountersWidget(),
               ),
 
