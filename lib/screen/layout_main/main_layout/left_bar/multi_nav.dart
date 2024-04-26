@@ -98,11 +98,11 @@ class _MultiNavState extends State<MultiNav>
               mainPro.updateHover(widget.i, widget.j, false);
             },
             child: MyContainer.transparent(
-              margin: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              margin: MySpacing.fromLTRB(16, 0, 16, 8),
               color: widget.data.active || widget.data.hover
                   ? Colours().activeCardColor(widget.dark)
                   : Colours().trans,
-              padding: const EdgeInsets.all(8),
+              padding: MySpacing.all(8),
               child: Center(
                 child: Icon(
                   widget.data.icon,
@@ -145,16 +145,16 @@ class _MultiNavState extends State<MultiNav>
             mainPro.updateHover(widget.i, widget.j, false);
           },
           child: MyContainer.transparent(
-            margin: const EdgeInsets.fromLTRB(24, 0, 16, 0),
+            margin: MySpacing.fromLTRB(24, 0, 16, 0),
             color: Colours().trans,
-            padding: const EdgeInsets.all(0),
+            padding: MySpacing.all(0),
             child: ListTileTheme(
-              contentPadding: const EdgeInsets.all(0),
+              contentPadding: MySpacing.all(0),
               dense: true,
               horizontalTitleGap: 0.0,
               minLeadingWidth: 0,
               child: ExpansionTile(
-                tilePadding: const EdgeInsets.all(0),
+                tilePadding: MySpacing.all(0),
                 initiallyExpanded: false,
                 maintainState: true,
                 onExpansionChanged: (_) {
@@ -170,7 +170,7 @@ class _MultiNavState extends State<MultiNav>
                   ),
                 ),
                 iconColor: Colours().activeItemColor(widget.dark),
-                childrenPadding: const EdgeInsets.symmetric(horizontal: 12),
+                childrenPadding: MySpacing.x(12),
                 title: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,

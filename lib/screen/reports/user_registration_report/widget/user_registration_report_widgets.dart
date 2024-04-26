@@ -16,14 +16,16 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class UserRegistrationReportChartWidget extends StatelessWidget {
-  const UserRegistrationReportChartWidget({super.key, required this.dark, required this.type});
+  const UserRegistrationReportChartWidget(
+      {super.key, required this.dark, required this.type});
 
   final bool dark;
   final int type;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserRegistrationReportProvider>(builder: (_, userRgistrationPro, __) {
+    return Consumer<UserRegistrationReportProvider>(
+        builder: (_, userRgistrationPro, __) {
       return MyCard(
         shadow: MyShadow(elevation: 0.5),
         paddingAll: 0,
@@ -32,7 +34,7 @@ class UserRegistrationReportChartWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: MySpacing.all(16),
               child: Text(
                 'User Registration',
                 style: Styles().text(
@@ -57,16 +59,18 @@ class UserRegistrationReportChartWidget extends StatelessWidget {
 }
 
 class UserRegistartionReportFilterWidget extends StatelessWidget {
-  const UserRegistartionReportFilterWidget({super.key, required this.dark, required this.type});
+  const UserRegistartionReportFilterWidget(
+      {super.key, required this.dark, required this.type});
 
   final bool dark;
   final int type;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserRegistrationReportProvider>(builder: (_, userRgistrationPro, __) {
+    return Consumer<UserRegistrationReportProvider>(
+        builder: (_, userRgistrationPro, __) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25),
+        padding: MySpacing.x(25),
         child: Center(
           child: MyFlex(
             runAlignment: WrapAlignment.start,
@@ -96,7 +100,8 @@ class UserRegistartionReportFilterWidget extends StatelessWidget {
                         PopupMenuButton(
                             onSelected: userRgistrationPro.onChangeLabelType,
                             itemBuilder: (BuildContext context) {
-                              return userRgistrationPro.listOption.map((option) {
+                              return userRgistrationPro.listOption
+                                  .map((option) {
                                 return PopupMenuItem(
                                     value: option,
                                     height: 32,
@@ -104,7 +109,8 @@ class UserRegistartionReportFilterWidget extends StatelessWidget {
                                         maxLines: 1,
                                         style: Styles().text(
                                           textType: MyTextType.bodySmall,
-                                          color: Colours().appBarOnBgColor(dark),
+                                          color:
+                                              Colours().appBarOnBgColor(dark),
                                           fontW: FontWeight.w400,
                                           size: 13,
                                         )));
@@ -116,19 +122,23 @@ class UserRegistartionReportFilterWidget extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Expanded(
-                                    child: Text(userRgistrationPro.selectdOpitonValue,
+                                    child: Text(
+                                        userRgistrationPro.selectdOpitonValue,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: Styles().text(
                                           textType: MyTextType.labelMedium,
-                                          color: Colours().appBarOnBgColor(dark),
+                                          color:
+                                              Colours().appBarOnBgColor(dark),
                                           fontW: FontWeight.w400,
                                           size: 13,
                                         )),
                                   ),
                                   Container(
-                                    margin: const EdgeInsets.only(left: 4),
-                                    child: Icon(Icons.arrow_drop_down, size: 22, color: Colours().appBarOnBgColor(dark)),
+                                    margin: MySpacing.only(left: 4),
+                                    child: Icon(Icons.arrow_drop_down,
+                                        size: 22,
+                                        color: Colours().appBarOnBgColor(dark)),
                                   )
                                 ],
                               ),
@@ -167,9 +177,10 @@ class UserRgistrationReportChartBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserRegistrationReportProvider>(builder: (_, userRgistrationPro, __) {
+    return Consumer<UserRegistrationReportProvider>(
+        builder: (_, userRgistrationPro, __) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: MySpacing.x(20),
         child: SfCartesianChart(
           //title: ChartTitle(text: 'Campaign Report'),
           plotAreaBorderWidth: 0,
@@ -189,29 +200,35 @@ class UserRgistrationReportChartBarWidget extends StatelessWidget {
             axisLine: const AxisLine(width: 0),
             majorTickLines: const MajorTickLines(size: 0),
           ),
-          series: getDefaultNumericSeries(userRgistrationPro.userRegistrationReportModel),
-          tooltipBehavior: TooltipBehavior(enable: true, format: 'Score: point.y', canShowMarker: false),
+          series: getDefaultNumericSeries(
+              userRgistrationPro.userRegistrationReportModel),
+          tooltipBehavior: TooltipBehavior(
+              enable: true, format: 'Score: point.y', canShowMarker: false),
         ),
       );
     });
   }
 
-  List<ColumnSeries<UserRegistrationReportModel, num>> getDefaultNumericSeries(List<UserRegistrationReportModel> listData) {
+  List<ColumnSeries<UserRegistrationReportModel, num>> getDefaultNumericSeries(
+      List<UserRegistrationReportModel> listData) {
     return <ColumnSeries<UserRegistrationReportModel, num>>[
       // USER
       ColumnSeries<UserRegistrationReportModel, num>(
           name: 'user',
           dataSource: listData,
           color: const Color.fromRGBO(207, 31, 25, 1),
-          xValueMapper: (UserRegistrationReportModel profile, _) => profile.xId as num,
-          yValueMapper: (UserRegistrationReportModel profile, _) => profile.user),
+          xValueMapper: (UserRegistrationReportModel profile, _) =>
+              profile.xId as num,
+          yValueMapper: (UserRegistrationReportModel profile, _) =>
+              profile.user),
 
       // TEAM
       ColumnSeries<UserRegistrationReportModel, num>(
         name: 'team',
         dataSource: listData,
         color: const Color.fromRGBO(4, 181, 1, 1),
-        xValueMapper: (UserRegistrationReportModel profile, _) => profile.xId as num,
+        xValueMapper: (UserRegistrationReportModel profile, _) =>
+            profile.xId as num,
         yValueMapper: (UserRegistrationReportModel profile, _) => profile.team,
       ),
 
@@ -220,8 +237,10 @@ class UserRgistrationReportChartBarWidget extends StatelessWidget {
         name: 'company',
         dataSource: listData,
         color: const Color.fromRGBO(143, 134, 134, 1),
-        xValueMapper: (UserRegistrationReportModel profile, _) => profile.xId as num,
-        yValueMapper: (UserRegistrationReportModel profile, _) => profile.company,
+        xValueMapper: (UserRegistrationReportModel profile, _) =>
+            profile.xId as num,
+        yValueMapper: (UserRegistrationReportModel profile, _) =>
+            profile.company,
       ),
     ];
   }

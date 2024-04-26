@@ -3,6 +3,7 @@ import 'package:beonchat_admin/screen/layout_main/main_layout/left_bar/side_navi
 import 'package:beonchat_admin/screen/layout_main/main_layout/top_bar/topbar.dart';
 import 'package:beonchat_admin/widget/responsive/my_responsive.dart';
 import 'package:beonchat_admin/widget/responsive/responsive.dart';
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -45,8 +46,8 @@ class Layout extends StatelessWidget {
                               left: 0,
                               bottom: 0,
                               child: SingleChildScrollView(
-                                padding:
-                                EdgeInsets.fromLTRB(0, 58 + flexSpacing, 0, flexSpacing),
+                                padding: MySpacing.fromLTRB(
+                                    0, 58 + flexSpacing, 0, flexSpacing),
                                 child: child,
                               ),
                             ),

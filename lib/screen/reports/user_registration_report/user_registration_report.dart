@@ -11,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class UserRegistrationReport extends StatelessWidget {
-  const UserRegistrationReport({Key? key, required this.type}) : super(key: key);
+  const UserRegistrationReport({Key? key, required this.type})
+      : super(key: key);
 
   final int type;
 
@@ -24,7 +25,7 @@ class UserRegistrationReport extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
+                padding: MySpacing.x(flexSpacing),
                 child: Text(
                   "Reports",
                   style: Styles().text(
@@ -39,8 +40,9 @@ class UserRegistrationReport extends StatelessWidget {
               // CHART CONTENT
               MySpacing.height(flexSpacing),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
-                child: UserRegistrationReportChartWidget(dark: themePro.darkTheme, type : type),
+                padding: MySpacing.x(flexSpacing),
+                child: UserRegistrationReportChartWidget(
+                    dark: themePro.darkTheme, type: type),
               ),
             ],
           ),

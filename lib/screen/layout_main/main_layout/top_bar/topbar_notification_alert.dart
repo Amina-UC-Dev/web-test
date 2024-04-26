@@ -41,7 +41,7 @@ Widget buildNotifications(BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: MySpacing.xy(16, 12),
             child: Text(
               "Notification",
               style: Styles().text(
@@ -56,15 +56,17 @@ Widget buildNotifications(BuildContext context) {
               dashSpace: 4,
               dashWidth: 6),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: MySpacing.xy(16, 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildNotification("Your order is received",
-                    "Order #1232 is ready to deliver",themePro.darkTheme),
+                    "Order #1232 is ready to deliver", themePro.darkTheme),
                 MySpacing.height(12),
-                buildNotification("Account Security ",
-                    "Your account password changed 1 hour ago",themePro.darkTheme),
+                buildNotification(
+                    "Account Security ",
+                    "Your account password changed 1 hour ago",
+                    themePro.darkTheme),
               ],
             ),
           ),
@@ -74,7 +76,7 @@ Widget buildNotifications(BuildContext context) {
               dashSpace: 4,
               dashWidth: 6),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            padding: MySpacing.x(16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

@@ -1,3 +1,4 @@
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
 
 class DividerWidget extends StatelessWidget {
@@ -10,9 +11,9 @@ class DividerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: hPadding ?? 0,
-        vertical: vPadding ?? 0,
+      padding: MySpacing.xy(
+        hPadding ?? 0,
+        vPadding ?? 0,
       ),
       child: const Divider(),
     );

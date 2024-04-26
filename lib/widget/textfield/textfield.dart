@@ -1,6 +1,7 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
+import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -39,30 +40,31 @@ class TextFieldWidget {
         validator: validator,
         obscureText: obscure,
         style: Styles().text(
-          textType: MyTextType.bodyMedium,
+            textType: MyTextType.bodyMedium,
             fontW: FontWeight.w400,
             color: textColor,
             size: textSize ?? (type == 1 ? 16 : 17)),
         decoration: InputDecoration(
-            errorStyle: const TextStyle(height: 0),
-            hintText: hintText.tr,
-            hintStyle: Styles().text(
+          errorStyle: const TextStyle(height: 0),
+          hintText: hintText.tr,
+          hintStyle: Styles().text(
               textType: MyTextType.bodyMedium,
-                fontW: FontWeight.w400,
-                color: Colours().grey,
-                size: hintSize ?? (type == 1 ? 16 : 17)),
-            enabledBorder: OutlineInputBorder(
+              fontW: FontWeight.w400,
+              color: Colours().grey,
+              size: hintSize ?? (type == 1 ? 16 : 17)),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(100),
+            borderSide: BorderSide(color: Colours().grey, width: 1),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(100),
+            borderSide: BorderSide(color: Colours().primary, width: 1),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(100),
-              borderSide: BorderSide(color: Colours().grey, width: 1),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(100),
-              borderSide: BorderSide(color: Colours().primary, width: 1),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(100),
-                borderSide: BorderSide(width: 1, color: Colours().primary)),
-            contentPadding: EdgeInsets.symmetric(horizontal: 15)),
+              borderSide: BorderSide(width: 1, color: Colours().primary)),
+          contentPadding: MySpacing.x(15),
+        ),
       ),
     );
   }

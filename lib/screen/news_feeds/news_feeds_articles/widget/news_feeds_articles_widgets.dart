@@ -16,18 +16,19 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:provider/provider.dart';
 
 class NewsFeedsArticlesListWidget extends StatelessWidget {
-  const NewsFeedsArticlesListWidget({super.key, required this.dark, required this.type});
+  const NewsFeedsArticlesListWidget(
+      {super.key, required this.dark, required this.type});
 
   final bool dark;
   final int type;
 
   OutlineInputBorder get outlineInputBorder => OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(4)),
-    borderSide: BorderSide(
+      borderRadius: BorderRadius.all(Radius.circular(4)),
+      borderSide: BorderSide(
         width: 1,
         strokeAlign: 0,
         color: Colours().appBarOnBgColor(dark),
-  ));
+      ));
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(16, 16, 16, 5),
+              padding: MySpacing.fromLTRB(16, 16, 16, 5),
               child: MyFlex(
                 runAlignment: WrapAlignment.start,
                 wrapAlignment: WrapAlignment.start,
@@ -136,7 +137,7 @@ class NewsFeedsArticlesListWidget extends StatelessWidget {
             // DATA TABLE
             MySpacing.height(12),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: MySpacing.x(16),
               child: newsFeedsPro.newsFeedsArticleListData != null
                   ? NewsFeedsArticlesDataTableWidget(
                       dark: dark,
@@ -161,7 +162,7 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<NewsFeedsArticlesProvider>(builder: (_, newsFeedsPro, __) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25),
+        padding: MySpacing.x(25),
         child: MyFlex(
           runAlignment: WrapAlignment.start,
           wrapAlignment: WrapAlignment.start,
@@ -221,8 +222,10 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
                                       )),
                                 ),
                                 Container(
-                                  margin: const EdgeInsets.only(left: 4),
-                                  child: Icon(Icons.arrow_drop_down, size: 22, color: Colours().appBarOnBgColor(dark)),
+                                  margin: MySpacing.only(left: 4),
+                                  child: Icon(Icons.arrow_drop_down,
+                                      size: 22,
+                                      color: Colours().appBarOnBgColor(dark)),
                                 )
                               ],
                             ),
@@ -277,7 +280,8 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
 }
 
 class NewsFeedsArticlesDataTableWidget extends StatelessWidget {
-  const NewsFeedsArticlesDataTableWidget({super.key, required this.dark, required this.type});
+  const NewsFeedsArticlesDataTableWidget(
+      {super.key, required this.dark, required this.type});
 
   final bool dark;
   final int type;
@@ -331,13 +335,17 @@ class NewsFeedsArticleDataTableSource extends DataTableSource {
       cells: [
         DataCell(TableRowContent(data[index].id.toString(), dark, null)),
         DataCell(TableRowContent(data[index].typeName.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].categoryName.toString(), dark, null)),
+        DataCell(
+            TableRowContent(data[index].categoryName.toString(), dark, null)),
         DataCell(TableRowContent(data[index].sort.toString(), dark, null)),
         DataCell(TableRowContent(data[index].title.toString(), dark, 250)),
-        DataCell(TableRowContent(data[index].description.toString(), dark, 400)),
+        DataCell(
+            TableRowContent(data[index].description.toString(), dark, 400)),
         DataCell(TableRowContent(data[index].adsTitle.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].articleDate.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].createDate.toString(), dark, null)),
+        DataCell(
+            TableRowContent(data[index].articleDate.toString(), dark, null)),
+        DataCell(
+            TableRowContent(data[index].createDate.toString(), dark, null)),
         DataCell(TableRowContent(data[index].status.toString(), dark, null)),
         DataCell(
           PopupMenuButton(
@@ -375,8 +383,9 @@ class NewsFeedsArticleDataTableSource extends DataTableSource {
                           )),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(left: 4),
-                      child: Icon(Icons.arrow_drop_down, size: 22, color: Colours().white),
+                      margin: MySpacing.only(left: 4),
+                      child: Icon(Icons.arrow_drop_down,
+                          size: 22, color: Colours().white),
                     )
                   ],
                 ),

@@ -24,7 +24,7 @@ class NewsFeedsArticles extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
+                padding: MySpacing.x(flexSpacing),
                 child: Text(
                   "News Feeds",
                   style: Styles().text(
@@ -39,8 +39,11 @@ class NewsFeedsArticles extends StatelessWidget {
               // FILTER
               MySpacing.height(flexSpacing),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: flexSpacing),
-                child: NewsFeedsArticlesListWidget(dark: themePro.darkTheme, type: type,),
+                padding: MySpacing.x(flexSpacing),
+                child: NewsFeedsArticlesListWidget(
+                  dark: themePro.darkTheme,
+                  type: type,
+                ),
               ),
             ],
           ),
