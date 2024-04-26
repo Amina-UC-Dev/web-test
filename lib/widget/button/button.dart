@@ -100,14 +100,7 @@ class ButtonWidget {
 }
 
 class SingleButton extends StatelessWidget {
-  const SingleButton(
-      {Key? key,
-      required this.type,
-      required this.callB,
-      required this.title,
-      this.color,
-      this.textColor,
-      this.fontW})
+  const SingleButton({Key? key, required this.type, required this.callB, required this.title, this.color, this.textColor, this.fontW})
       : super(key: key);
 
   final int type;
@@ -125,7 +118,7 @@ class SingleButton extends StatelessWidget {
         top: 10,
         bottom: 35,
         left: type == 1 ? 40 : w / 3.7,
-        right: type == 1 ? 40 :w / 3.7,
+        right: type == 1 ? 40 : w / 3.7,
       ),
       child: SizedBox(
         height: 50,
@@ -158,7 +151,8 @@ class SingleAlertButton extends StatelessWidget {
       this.colour,
       required this.horizontalPadding,
       this.fontW,
-      this.fontSize, this.radius})
+      this.fontSize,
+      this.radius})
       : super(key: key);
 
   final int type;

@@ -45,6 +45,7 @@ dependencies:
   url_strategy:
   google_fonts:
   responsive_grid_list:
+  syncfusion_flutter_charts: ^20.1.52
 
 dev_dependencies:
   flutter_test:
