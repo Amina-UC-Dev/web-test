@@ -126,7 +126,7 @@ class UserRegistartionReportFilterWidget extends StatelessWidget {
                                 border: outlineInputBorder(dark),
                                 enabledBorder: outlineInputBorder(dark),
                                 focusedBorder: focusedInputBorder,
-                                contentPadding: MySpacing.all(16),
+                                contentPadding: MySpacing.xy(14, 12),
                                 isCollapsed: true,
                                 floatingLabelBehavior: FloatingLabelBehavior.never),
                             onChanged: userRgistrationPro.onChangeLabelType),
@@ -137,7 +137,7 @@ class UserRegistartionReportFilterWidget extends StatelessWidget {
                 child: MyButton(
                   onPressed: () {},
                   elevation: 0,
-                  padding: MySpacing.xy(20, 16),
+                  padding: MySpacing.xy(20, 18),
                   backgroundColor: Colours().blue,
                   borderRadiusAll: 6,
                   child: Text("filter",

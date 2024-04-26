@@ -230,7 +230,7 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
                               border: outlineInputBorder(dark),
                               enabledBorder: outlineInputBorder(dark),
                               focusedBorder: focusedInputBorder,
-                              contentPadding: MySpacing.all(16),
+                              contentPadding: MySpacing.xy(14, 12),
                               isCollapsed: true,
                               floatingLabelBehavior: FloatingLabelBehavior.never),
                           onChanged: newsFeedsPro.onChangeLabelType)
@@ -248,7 +248,7 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
                   MyButton(
                     onPressed: () {},
                     elevation: 0,
-                    padding: MySpacing.xy(20, 16),
+                    padding: MySpacing.xy(20, 18),
                     backgroundColor: Colours().info,
                     borderRadiusAll: 6,
                     child: Text("reset",
@@ -262,7 +262,7 @@ class NewsFeedsArticlesFilterWidget extends StatelessWidget {
                   MyButton(
                     onPressed: () {},
                     elevation: 0,
-                    padding: MySpacing.xy(20, 16),
+                    padding: MySpacing.xy(20, 18),
                     backgroundColor: Colours().blue,
                     borderRadiusAll: 6,
                     child: Text("filter",
@@ -450,7 +450,7 @@ class FormDummy extends StatelessWidget {
                               border: outlineInputBorder(dark),
                               enabledBorder: outlineInputBorder(dark),
                               focusedBorder: focusedInputBorder,
-                              contentPadding: MySpacing.all(16),
+                              contentPadding: MySpacing.xy(15, 14),
                               isCollapsed: true,
                               floatingLabelBehavior: FloatingLabelBehavior.never),
                           onChanged: newsFeedsPro.onChangeLabelType,
