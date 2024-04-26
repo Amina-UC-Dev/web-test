@@ -13,6 +13,7 @@ class Colours {
   Color grey4 = const Color(0xffdcdcdc);
   Color grey5 = const Color(0xff282c32);
   Color red = const Color(0xfff0323c);
+  Color danger = const Color(0xffdc3545);
   Color red2 = const Color(0xffdc3545);
   Color lightBg = const Color(0xffF5F5F5);
   Color darkBg = const Color(0xff262729);
@@ -20,6 +21,7 @@ class Colours {
   Color pink = const Color(0xffFF1087);
   Color success = const Color(0xff00be82);
   Color blue = const Color(0xff3874ff);
+  Color info = const Color(0xff0dcaf0);
   Color lightBlue = const Color(0xff0dcaf0);
   Color red3 = const Color(0xffFF0000);
   Color black = Colors.black;

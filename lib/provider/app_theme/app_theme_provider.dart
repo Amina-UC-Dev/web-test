@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AppThemeProvider extends ChangeNotifier {
   CachedStorage darkThemePreference = CachedStorage();
-  bool _darkTheme = true;
+  bool _darkTheme = false;
 
   bool get darkTheme => _darkTheme;
 
