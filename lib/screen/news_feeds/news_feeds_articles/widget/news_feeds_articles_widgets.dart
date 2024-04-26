@@ -6,6 +6,7 @@ import 'package:beonchat_admin/provider/news_feeds/news_feeds_articles_provider.
 import 'package:beonchat_admin/widget/button/button.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex_item.dart';
+import 'package:beonchat_admin/widget/table/table.dart';
 import 'package:beonchat_admin/widget/util/my_button.dart';
 import 'package:beonchat_admin/widget/util/my_card.dart';
 import 'package:beonchat_admin/widget/util/my_container.dart';
@@ -289,17 +290,17 @@ class NewsFeedsArticlesDataTableWidget extends StatelessWidget {
         //arrowHeadColor: Colours().grey2,
         source: newsFeedsPro.newsFeedsArticleListData!,
         columns: [
-          DataColumn(label: TableRowHead("id", dark)),
-          DataColumn(label: TableRowHead("type", dark)),
-          DataColumn(label: TableRowHead('category name', dark)),
-          DataColumn(label: TableRowHead('sort', dark)),
-          DataColumn(label: TableRowHead('title', dark)),
-          DataColumn(label: TableRowHead('description', dark)),
-          DataColumn(label: TableRowHead('ads title', dark)),
-          DataColumn(label: TableRowHead('article date', dark)),
-          DataColumn(label: TableRowHead('date created', dark)),
-          DataColumn(label: TableRowHead('status', dark)),
-          DataColumn(label: TableRowHead('action', dark)),
+          DataColumn(label: TableRowHead( label: "id", dark: dark)),
+          DataColumn(label: TableRowHead( label: "type", dark: dark)),
+          DataColumn(label: TableRowHead( label: "category", dark: dark)),
+          DataColumn(label: TableRowHead( label: "sort", dark: dark)),
+          DataColumn(label: TableRowHead( label: "title", dark: dark)),
+          DataColumn(label: TableRowHead( label: "description", dark: dark)),
+          DataColumn(label: TableRowHead( label: "ads title", dark: dark)),
+          DataColumn(label: TableRowHead( label: "article date", dark: dark)),
+          DataColumn(label: TableRowHead( label: "date created", dark: dark)),
+          DataColumn(label: TableRowHead( label: "action", dark: dark)),
+          DataColumn(label: TableRowHead( label: "action", dark: dark)),
         ],
         columnSpacing: 25,
         horizontalMargin: 28,
@@ -329,16 +330,16 @@ class NewsFeedsArticleDataTableSource extends DataTableSource {
     return DataRow(
       //color: MaterialStatePropertyAll(!dark ? Colours().white : Colours().dark1 ),
       cells: [
-        DataCell(TableRowContent(data[index].id.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].typeName.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].categoryName.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].sort.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].title.toString(), dark, 250)),
-        DataCell(TableRowContent(data[index].description.toString(), dark, 400)),
-        DataCell(TableRowContent(data[index].adsTitle.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].articleDate.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].createDate.toString(), dark, null)),
-        DataCell(TableRowContent(data[index].status.toString(), dark, null)),
+        DataCell(TableRowContent(width: null, label: data[index].id.toString(), dark: dark)),
+        DataCell(TableRowContent(width: null, label: data[index].typeName.toString(), dark: dark)),
+        DataCell(TableRowContent(width: null, label: data[index].categoryName.toString(), dark: dark)),
+        DataCell(TableRowContent(width: null, label: data[index].sort.toString(), dark: dark)),
+        DataCell(TableRowContent(width: 250, label: data[index].title.toString(), dark: dark)),
+        DataCell(TableRowContent(width: 400, label: data[index].description.toString(), dark: dark)),
+        DataCell(TableRowContent(width: null, label: data[index].adsTitle.toString(), dark: dark)),
+        DataCell(TableRowContent(width: null, label: data[index].articleDate.toString(), dark: dark)),
+        DataCell(TableRowContent(width: null, label: data[index].createDate.toString(), dark: dark)),
+        DataCell(TableRowContent(width: null, label: data[index].status.toString(), dark: dark)),
         DataCell(
           PopupMenuButton(
               //onSelected: newsFeedsPro.onChangeLabelType,
@@ -385,33 +386,4 @@ class NewsFeedsArticleDataTableSource extends DataTableSource {
       ],
     );
   }
-}
-
-Widget TableRowContent(String label, bool dark, double? width) {
-  return SizedBox(
-    width: width ?? null,
-    child: Text(
-      label,
-      maxLines: 2,
-      overflow: TextOverflow.ellipsis,
-      style: Styles().text(
-        textType: MyTextType.bodySmall,
-        color: Colours().appBarOnBgColor(dark),
-        fontW: FontWeight.w400,
-        size: 12,
-      ),
-    ),
-  );
-}
-
-Widget TableRowHead(String label, bool dark) {
-  return Text(
-    label,
-    style: Styles().text(
-      textType: MyTextType.titleMedium,
-      color: Colours().appBarOnBgColor(dark),
-      fontW: FontWeight.w500,
-      size: 12,
-    ),
-  );
 }

@@ -1,6 +1,7 @@
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
+import 'package:beonchat_admin/widget/table/table.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:beonchat_admin/model/dashboard/dashboard_all_model.dart';
@@ -232,7 +233,7 @@ Widget buildCircleChartData(Color color, String title, bool dark) {
         color: color,
       ),
       MySpacing.width(8),
-      TableRowText(title, dark)
+      TableRowContent(width: null, label: title, dark: dark)
     ],
   );
 }
@@ -289,35 +290,31 @@ class DashboardTodayUserRegisteredWidget extends StatelessWidget {
                   child: MyContainer.bordered(
                     paddingAll: 0,
                     child: DataTable(
-                        sortAscending: false,
+                        sortAscending: true,
                         onSelectAll: (_) => {},
                         headingRowColor: MaterialStatePropertyAll(Colours().appBarOnBgColor(!dark)),
                         dataRowHeight: 50,
                         columnSpacing: 35,
                         columns: [
-                          DataColumn(label: TableRowHead("logo", dark)),
-                          DataColumn(label: TableRowHead("name", dark)),
-                          DataColumn(label: TableRowHead("location", dark)),
-                          DataColumn(label: TableRowHead("date", dark)),
+                          DataColumn(label: TableRowHead(label: "logo", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "name", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "location", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "date", dark: dark)),
                         ],
                         rows: dashPro.dashboardProfiles
                             .mapIndexed(
                               (index, data) => DataRow(
                                 cells: [
-                                  DataCell(MyContainer(
-                                    paddingAll: 0,
-                                    borderRadiusAll: 22,
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    child: Image.network(
-                                      data.logo,
-                                      height: 30,
-                                      width: 30,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )),
-                                  DataCell(TableRowText("${data.name}", dark)),
-                                  DataCell(TableRowText("${data.location}", dark)),
-                                  DataCell(TableRowText("${data.date}", dark)),
+                                  DataCell(
+                                    MyContainer(
+                                        paddingAll: 0,
+                                        borderRadiusAll: 22,
+                                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                                        child: Image.network(data.logo, height: 30, width: 30, fit: BoxFit.cover)),
+                                  ),
+                                  DataCell(TableRowContent(width: null, label: data.name, dark: dark)),
+                                  DataCell(TableRowContent(width: 300, label: data.location, dark: dark)),
+                                  DataCell(TableRowContent(width: null, label: data.date, dark: dark)),
                                 ],
                               ),
                             )
@@ -391,43 +388,25 @@ class DashboardCompanyRegisteredWidget extends StatelessWidget {
                         dataRowHeight: 50,
                         columnSpacing: 35,
                         columns: [
-                          DataColumn(
-                            label: TableRowHead("logo", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("name", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("location", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("date", dark),
-                          ),
+                          DataColumn(label: TableRowHead(label: "logo", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "name", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "location", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "date", dark: dark)),
                         ],
                         rows: dashPro.dashboardProfiles
                             .mapIndexed(
                               (index, data) => DataRow(
                                 cells: [
-                                  DataCell(MyContainer(
-                                    paddingAll: 0,
-                                    borderRadiusAll: 22,
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    child: Image.network(
-                                      data.logo,
-                                      height: 30,
-                                      width: 30,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )),
                                   DataCell(
-                                    TableRowText("${data.name}", dark),
+                                    MyContainer(
+                                        paddingAll: 0,
+                                        borderRadiusAll: 22,
+                                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                                        child: Image.network(data.logo, height: 30, width: 30, fit: BoxFit.cover)),
                                   ),
-                                  DataCell(
-                                    TableRowText("${data.location}", dark),
-                                  ),
-                                  DataCell(
-                                    TableRowText("${data.date}", dark),
-                                  ),
+                                  DataCell(TableRowContent(width: null, label: data.name, dark: dark)),
+                                  DataCell(TableRowContent(width: 300, label: data.location, dark: dark)),
+                                  DataCell(TableRowContent(width: null, label: data.date, dark: dark)),
                                 ],
                               ),
                             )
@@ -501,43 +480,25 @@ class DashboardPendingUserWidget extends StatelessWidget {
                         dataRowHeight: 50,
                         columnSpacing: 35,
                         columns: [
-                          DataColumn(
-                            label: TableRowHead("logo", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("name", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("location", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("date", dark),
-                          ),
+                          DataColumn(label: TableRowHead(label: "logo", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "name", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "location", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "date", dark: dark)),
                         ],
                         rows: dashPro.dashboardProfiles
                             .mapIndexed(
                               (index, data) => DataRow(
                                 cells: [
-                                  DataCell(MyContainer(
-                                    paddingAll: 0,
-                                    borderRadiusAll: 22,
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    child: Image.network(
-                                      data.logo,
-                                      height: 30,
-                                      width: 30,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )),
                                   DataCell(
-                                    TableRowText("${data.name}", dark),
+                                    MyContainer(
+                                        paddingAll: 0,
+                                        borderRadiusAll: 22,
+                                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                                        child: Image.network(data.logo, height: 30, width: 30, fit: BoxFit.cover)),
                                   ),
-                                  DataCell(
-                                    TableRowText("${data.location}", dark),
-                                  ),
-                                  DataCell(
-                                    TableRowText("${data.date}", dark),
-                                  ),
+                                  DataCell(TableRowContent(width: null, label: data.name, dark: dark)),
+                                  DataCell(TableRowContent(width: 300, label: data.location, dark: dark)),
+                                  DataCell(TableRowContent(width: null, label: data.date, dark: dark)),
                                 ],
                               ),
                             )
@@ -611,43 +572,25 @@ class DashboardPendingCompanyWidget extends StatelessWidget {
                         dataRowHeight: 50,
                         columnSpacing: 35,
                         columns: [
-                          DataColumn(
-                            label: TableRowHead("logo", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("name", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("location", dark),
-                          ),
-                          DataColumn(
-                            label: TableRowHead("date", dark),
-                          ),
+                          DataColumn(label: TableRowHead(label: "logo", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "name", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "location", dark: dark)),
+                          DataColumn(label: TableRowHead(label: "date", dark: dark)),
                         ],
                         rows: dashPro.dashboardProfiles
                             .mapIndexed(
                               (index, data) => DataRow(
                                 cells: [
-                                  DataCell(MyContainer(
-                                    paddingAll: 0,
-                                    borderRadiusAll: 22,
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    child: Image.network(
-                                      data.logo,
-                                      height: 30,
-                                      width: 30,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )),
                                   DataCell(
-                                    TableRowText("${data.name}", dark),
+                                    MyContainer(
+                                        paddingAll: 0,
+                                        borderRadiusAll: 22,
+                                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                                        child: Image.network(data.logo, height: 30, width: 30, fit: BoxFit.cover)),
                                   ),
-                                  DataCell(
-                                    TableRowText("${data.location}", dark),
-                                  ),
-                                  DataCell(
-                                    TableRowText("${data.date}", dark),
-                                  ),
+                                  DataCell(TableRowContent(width: null, label: data.name, dark: dark)),
+                                  DataCell(TableRowContent(width: 300, label: data.location, dark: dark)),
+                                  DataCell(TableRowContent(width: null, label: data.date, dark: dark)),
                                 ],
                               ),
                             )
@@ -855,30 +798,6 @@ Widget buildCard(
           ],
         ),
       ],
-    ),
-  );
-}
-
-Widget TableRowHead(String label, bool dark) {
-  return Text(
-    label,
-    style: Styles().text(
-      textType: MyTextType.titleMedium,
-      color: Colours().appBarOnBgColor(dark),
-      fontW: FontWeight.w500,
-      size: 15,
-    ),
-  );
-}
-
-Widget TableRowText(String label, bool dark) {
-  return Text(
-    label,
-    style: Styles().text(
-      textType: MyTextType.titleMedium,
-      color: Colours().appBarOnBgColor(dark),
-      fontW: FontWeight.w400,
-      size: 14,
     ),
   );
 }
