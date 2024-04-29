@@ -76,9 +76,7 @@ class LoginForm extends StatelessWidget {
           SingleAlertButton(
             type: type,
             callB: () {
-              Provider.of<MainProvider>(context,listen: false).init();
-              Navigator.pushNamedAndRemoveUntil(
-                  context, DashBoardResponsive.routeName, (route) => false);
+              Provider.of<MainProvider>(context,listen: false).init(context);
             },
             title: "login",
             bottomPadding: 0,

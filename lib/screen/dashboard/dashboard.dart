@@ -3,6 +3,7 @@ import 'package:beonchat_admin/const/styles.dart';
 import 'package:beonchat_admin/const/text_size.dart';
 import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
 import 'package:beonchat_admin/provider/dashboard/dashboard_provider.dart';
+import 'package:beonchat_admin/provider/main/main_provider.dart';
 import 'package:beonchat_admin/screen/dashboard/widget/dashboard_widgets.dart';
 import 'package:beonchat_admin/screen/layout_main/main_layout/layout.dart';
 import 'package:beonchat_admin/widget/responsive/my_flex.dart';
@@ -21,99 +22,106 @@ class DashBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<DashBoardProvider>(builder: (_, dashPro, __) {
       return Consumer<AppThemeProvider>(builder: (_, themePro, __) {
-        return Layout(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: MySpacing.x(flexSpacing),
-                child: Text(
-                  "Dashboard",
-                  style: Styles().text(
-                    textType: MyTextType.titleMedium,
-                    color: Colours().appBarOnBgColor(themePro.darkTheme),
-                    fontW: FontWeight.w600,
-                    size: 18,
+        return WillPopScope(
+          onWillPop: () async {
+            Provider.of<MainProvider>(context, listen: false)
+                .backNavigationHandle(context);
+            return false;
+          },
+          child: Layout(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: MySpacing.x(flexSpacing),
+                  child: Text(
+                    "Dashboard",
+                    style: Styles().text(
+                      textType: MyTextType.titleMedium,
+                      color: Colours().appBarOnBgColor(themePro.darkTheme),
+                      fontW: FontWeight.w600,
+                      size: 18,
+                    ),
                   ),
                 ),
-              ),
 
-              // PROIFLE COUNTERS
-              MySpacing.height(flexSpacing),
-              Padding(
-                padding: MySpacing.x(flexSpacing),
-                child: const DashboardProfileCountersWidget(),
-              ),
-
-              // CAMPAIGN + ACTIVE USERS
-              MySpacing.height(flexSpacing),
-              Padding(
-                padding: MySpacing.x(flexSpacing),
-                child: MyFlex(
-                  runAlignment: WrapAlignment.start,
-                  wrapCrossAlignment: WrapCrossAlignment.start,
-                  contentPadding: false,
-                  children: [
-                    MyFlexItem(
-                      sizes: "lg-6",
-                      child: DashboardCampaignReportWidget(
-                          dark: themePro.darkTheme),
-                    ),
-                    MyFlexItem(
-                      sizes: "lg-6",
-                      child:
-                          DashboardActiveUsersWidget(dark: themePro.darkTheme),
-                    )
-                  ],
+                // PROIFLE COUNTERS
+                MySpacing.height(flexSpacing),
+                Padding(
+                  padding: MySpacing.x(flexSpacing),
+                  child: const DashboardProfileCountersWidget(),
                 ),
-              ),
 
-              // TODAY USER + COMPANY REGISTERED
-              MySpacing.height(flexSpacing),
-              Padding(
-                padding: MySpacing.x(flexSpacing),
-                child: MyFlex(
-                  runAlignment: WrapAlignment.start,
-                  wrapCrossAlignment: WrapCrossAlignment.start,
-                  contentPadding: false,
-                  children: [
-                    MyFlexItem(
-                      sizes: "lg-6",
-                      child: DashboardTodayUserRegisteredWidget(
-                          dark: themePro.darkTheme),
-                    ),
-                    MyFlexItem(
-                      sizes: "lg-6",
-                      child: DashboardCompanyRegisteredWidget(
-                          dark: themePro.darkTheme),
-                    )
-                  ],
+                // CAMPAIGN + ACTIVE USERS
+                MySpacing.height(flexSpacing),
+                Padding(
+                  padding: MySpacing.x(flexSpacing),
+                  child: MyFlex(
+                    runAlignment: WrapAlignment.start,
+                    wrapCrossAlignment: WrapCrossAlignment.start,
+                    contentPadding: false,
+                    children: [
+                      MyFlexItem(
+                        sizes: "lg-6",
+                        child: DashboardCampaignReportWidget(
+                            dark: themePro.darkTheme),
+                      ),
+                      MyFlexItem(
+                        sizes: "lg-6",
+                        child:
+                            DashboardActiveUsersWidget(dark: themePro.darkTheme),
+                      )
+                    ],
+                  ),
                 ),
-              ),
 
-              // PENDING USER + COMPANY REGISTERED
-              MySpacing.height(flexSpacing),
-              Padding(
-                padding: MySpacing.x(flexSpacing),
-                child: MyFlex(
-                  runAlignment: WrapAlignment.start,
-                  wrapCrossAlignment: WrapCrossAlignment.start,
-                  contentPadding: false,
-                  children: [
-                    MyFlexItem(
-                      sizes: "lg-6",
-                      child:
-                          DashboardPendingUserWidget(dark: themePro.darkTheme),
-                    ),
-                    MyFlexItem(
-                      sizes: "lg-6",
-                      child: DashboardPendingCompanyWidget(
-                          dark: themePro.darkTheme),
-                    )
-                  ],
+                // TODAY USER + COMPANY REGISTERED
+                MySpacing.height(flexSpacing),
+                Padding(
+                  padding: MySpacing.x(flexSpacing),
+                  child: MyFlex(
+                    runAlignment: WrapAlignment.start,
+                    wrapCrossAlignment: WrapCrossAlignment.start,
+                    contentPadding: false,
+                    children: [
+                      MyFlexItem(
+                        sizes: "lg-6",
+                        child: DashboardTodayUserRegisteredWidget(
+                            dark: themePro.darkTheme),
+                      ),
+                      MyFlexItem(
+                        sizes: "lg-6",
+                        child: DashboardCompanyRegisteredWidget(
+                            dark: themePro.darkTheme),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
+
+                // PENDING USER + COMPANY REGISTERED
+                MySpacing.height(flexSpacing),
+                Padding(
+                  padding: MySpacing.x(flexSpacing),
+                  child: MyFlex(
+                    runAlignment: WrapAlignment.start,
+                    wrapCrossAlignment: WrapCrossAlignment.start,
+                    contentPadding: false,
+                    children: [
+                      MyFlexItem(
+                        sizes: "lg-6",
+                        child:
+                            DashboardPendingUserWidget(dark: themePro.darkTheme),
+                      ),
+                      MyFlexItem(
+                        sizes: "lg-6",
+                        child: DashboardPendingCompanyWidget(
+                            dark: themePro.darkTheme),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       });

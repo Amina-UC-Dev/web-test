@@ -99,7 +99,7 @@ class SideNavigationBar extends StatelessWidget {
                                             },
                                             onTap: () {
                                               mainPro.updateNavigation(
-                                                  i, j, null);
+                                                  mainIndex: i, itemIndex: j, context: context);
                                             },
                                             child: NavTile(
                                               data: mainPro

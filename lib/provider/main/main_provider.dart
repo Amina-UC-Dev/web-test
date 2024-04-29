@@ -1,4 +1,10 @@
+import 'dart:async';
+import 'dart:html';
+
 import 'package:beonchat_admin/model/navigation_bar/navigation_bar_model.dart';
+import 'package:beonchat_admin/screen/dashboard/dashboard_responsive.dart';
+import 'package:beonchat_admin/screen/news_feeds/news_feeds_articles/news_feeds_articles_responsive.dart';
+import 'package:beonchat_admin/screen/reports/user_registration_report/user_registration_report_responsive.dart';
 import 'package:flutter/material.dart';
 
 class MainProvider extends ChangeNotifier {
@@ -14,6 +20,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: DashBoardResponsive.routeName,
           subItems: [],
         ),
         NavBarItem(
@@ -22,6 +29,7 @@ class MainProvider extends ChangeNotifier {
           multi: true,
           hover: false,
           active: false,
+          routName: "",
           subItems: [
             NavBarItem(
               title: "User",
@@ -29,6 +37,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -37,6 +46,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -45,6 +55,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -53,6 +64,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
           ],
@@ -63,6 +75,7 @@ class MainProvider extends ChangeNotifier {
           multi: true,
           hover: false,
           active: false,
+          routName: "",
           subItems: [
             NavBarItem(
               title: "Upload Form",
@@ -70,6 +83,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -78,6 +92,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -86,6 +101,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -94,6 +110,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
           ],
@@ -104,6 +121,7 @@ class MainProvider extends ChangeNotifier {
           multi: true,
           hover: false,
           active: false,
+          routName: "",
           subItems: [
             NavBarItem(
               title: "Conversations",
@@ -111,6 +129,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -119,6 +138,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -127,6 +147,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -135,6 +156,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
           ],
@@ -145,6 +167,7 @@ class MainProvider extends ChangeNotifier {
           multi: true,
           hover: false,
           active: false,
+          routName: "",
           subItems: [
             NavBarItem(
               title: "Campaign Master",
@@ -152,6 +175,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -160,6 +184,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -168,6 +193,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -176,6 +202,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -184,6 +211,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
           ],
@@ -194,6 +222,7 @@ class MainProvider extends ChangeNotifier {
           multi: true,
           hover: false,
           active: false,
+          routName: "",
           subItems: [
             NavBarItem(
               title: "Articles",
@@ -201,6 +230,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: NewsFeedsArticlesResponsive.routeName,
               subItems: [],
             ),
             NavBarItem(
@@ -209,6 +239,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -217,6 +248,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -225,6 +257,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -233,6 +266,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -241,6 +275,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -249,6 +284,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -257,6 +293,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
           ],
@@ -272,6 +309,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: UserRegistrationReportResponsive.routeName,
           subItems: [],
         ),
         NavBarItem(
@@ -280,6 +318,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: "",
           subItems: [],
         ),
         NavBarItem(
@@ -288,6 +327,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: "",
           subItems: [],
         ),
         NavBarItem(
@@ -296,6 +336,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: "",
           subItems: [],
         ),
         NavBarItem(
@@ -304,6 +345,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: "",
           subItems: [],
         ),
         NavBarItem(
@@ -312,6 +354,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: "",
           subItems: [],
         ),
         NavBarItem(
@@ -320,6 +363,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: "",
           subItems: [],
         ),
         NavBarItem(
@@ -328,6 +372,7 @@ class MainProvider extends ChangeNotifier {
           multi: false,
           hover: false,
           active: false,
+          routName: "",
           subItems: [],
         ),
       ],
@@ -341,6 +386,7 @@ class MainProvider extends ChangeNotifier {
           multi: true,
           hover: false,
           active: false,
+          routName: "",
           subItems: [
             NavBarItem(
               title: "Category Management",
@@ -348,6 +394,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -356,6 +403,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -364,6 +412,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -372,6 +421,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
           ],
@@ -382,6 +432,7 @@ class MainProvider extends ChangeNotifier {
           multi: true,
           hover: false,
           active: false,
+          routName: "",
           subItems: [
             NavBarItem(
               title: "Team Members",
@@ -389,6 +440,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -397,6 +449,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -405,6 +458,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
             NavBarItem(
@@ -413,6 +467,7 @@ class MainProvider extends ChangeNotifier {
               multi: false,
               hover: false,
               active: false,
+              routName: "",
               subItems: [],
             ),
           ],
@@ -421,8 +476,10 @@ class MainProvider extends ChangeNotifier {
     ),
   ];
 
-  init() {
+  init(BuildContext context) {
     navigation.first.items.first.active = true;
+    Navigator.pushNamedAndRemoveUntil(
+        context, navigation.first.items.first.routName, (route) => false);
     minimizeDrawer = false;
     notifyListeners();
   }
@@ -432,7 +489,11 @@ class MainProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  updateNavigation(int i, int j, int? k) {
+  updateNavigation(
+      {required int mainIndex,
+      required int itemIndex,
+      int? subItemIndex,
+      required BuildContext context}) {
     for (var element in navigation) {
       for (var element2 in element.items) {
         if (element2.active) {
@@ -445,15 +506,45 @@ class MainProvider extends ChangeNotifier {
         }
       }
     }
-    if (navigation[i].items[j].multi) {
-      if (k != null) {
-        navigation[i].items[j].active = true;
-        navigation[i].items[j].subItems[k].active = true;
+    // for (int i = 0; i < navigation.length; i++) {
+    //   for (int j = 0; j < navigation[i].items.length; j++) {
+    //     if (i == mainIndex && j == itemIndex && subItemIndex == null) {
+    //       navigation[i].items[j].active = true;
+    //     } else {
+    //       navigation[i].items[j].active = false;
+    //     }
+    //     for (int k = 0; k < navigation[i].items[j].subItems.length; k++) {
+    //       if (i == mainIndex && j == itemIndex && k == subItemIndex){
+    //         navigation[i].items[j].active = true;
+    //         navigation[i].items[j].subItems[k].active = true;
+    //       }else {
+    //         navigation[i].items[j].subItems[k].active = false;
+    //       }
+    //     }
+    //   }
+    // }
+    if (navigation[mainIndex].items[itemIndex].multi) {
+      if (subItemIndex != null) {
+        navigation[mainIndex].items[itemIndex].active = true;
+        navigation[mainIndex].items[itemIndex].subItems[subItemIndex].active =
+            true;
+        navigateRoute(
+            context: context,
+            route: navigation[mainIndex]
+                .items[itemIndex]
+                .subItems[subItemIndex]
+                .routName);
       } else {
-        navigation[i].items[j].active = true;
+        navigation[mainIndex].items[itemIndex].active = true;
+        navigateRoute(
+            context: context,
+            route: navigation[mainIndex].items[itemIndex].routName);
       }
     } else {
-      navigation[i].items[j].active = true;
+      navigation[mainIndex].items[itemIndex].active = true;
+      navigateRoute(
+          context: context,
+          route: navigation[mainIndex].items[itemIndex].routName);
     }
     notifyListeners();
   }
@@ -461,6 +552,20 @@ class MainProvider extends ChangeNotifier {
   updateHover(int i, int j, bool val) {
     navigation[i].items[j].hover = val;
     notifyListeners();
+  }
+
+  backNavigationHandle(BuildContext context) {
+    print(ModalRoute.of(context)!.settings.name);
+    // Navigator.pop(context);
+    // Timer(Duration(seconds: 1), () {
+    //   print(ModalRoute.of(context)!.settings.name);
+    // });
+  }
+
+  navigateRoute({required String route, required BuildContext context}) {
+    if (route.isNotEmpty && ModalRoute.of(context)!.settings.name != route) {
+      Navigator.pushNamed(context, route);
+    }
   }
 
   updateExpandedHover(int i, int j, int k, bool val) {

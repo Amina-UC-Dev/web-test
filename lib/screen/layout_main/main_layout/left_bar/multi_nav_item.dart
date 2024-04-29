@@ -28,7 +28,7 @@ class MultiNavItem extends StatelessWidget {
     return Consumer<MainProvider>(builder: (_, mainPro, __) {
       return GestureDetector(
         onTap: () {
-          mainPro.updateNavigation(i, j, k);
+          mainPro.updateNavigation(mainIndex: i,itemIndex: j,subItemIndex: k,context: context);
         },
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
