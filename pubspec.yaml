@@ -49,6 +49,7 @@ dependencies:
   lucide_icons:
   fluttertoast: 8.2.4
   intl:
+  device_info_plus:
 
 dev_dependencies:
   flutter_test:

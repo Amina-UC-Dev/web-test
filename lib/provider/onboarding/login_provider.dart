@@ -1,12 +1,15 @@
+import 'package:beonchat_admin/service/API/api_services.dart';
 import 'package:beonchat_admin/service/API/api_urls.dart';
+import 'package:beonchat_admin/service/device_info/device_info.dart';
 import 'package:beonchat_admin/widget/loader/loader_widget.dart';
-import 'package:beonchat_admin/widget/toast/toast_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginProvider extends ChangeNotifier {
   final FocusNode passwordFocus = FocusNode();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  final loginFormKey = GlobalKey<FormState>();
+  ApiService apiService = ApiService();
 
   reset(bool update) async {
     email.text = "";
@@ -20,25 +23,26 @@ class LoginProvider extends ChangeNotifier {
         required String passwordText,
         required String emailText,
        }) async {
-    // Loader().showAlertLoader(context: context, type: type);
-    // String deviceToken =
-    //     (await CacheDataStorage().getValue(key: "device_token")) ?? "token";
-    // String apiToken =
-    //    "030723553bff7";
-    // String url = "${ApiUrls().baseUrl}beonchat/admin/login";
-    // Map<String, String> header = {
-    //   "Content-Type": "application/json",
-    // };
-    //
-    // Map<String, dynamic> body = {
-    //   "api_token": apiToken,
-    //   "email_id": emailText,
-    //   "password": passwordText,
-    //   "device_fcm_token": deviceToken,
-    // };
-    // var response =
-    // await apiService.postApi(url: url, header: header, body: body);
-    // Navigator.pop(context);
+    Loader().showAlertLoader(context: context, type: type);
+    String url = "${ApiUrls().baseUrl}beonchat/admin/login";
+
+    String apiToken = ApiUrls().apiToken;
+    String browserId = await DeviceDetails().getDeviceName();
+    String fcmToken = "token";
+    Map<String, String> header = {
+      "Content-Type": "application/json",
+    };
+
+    Map<String, dynamic> body = {
+      "api_token": apiToken,
+      "email_id": emailText,
+      "password": passwordText,
+      "brower_id ": browserId,
+      "fcm_token": fcmToken,
+    };
+    var response =
+    await apiService.postApi(url: url, header: header, body: body);
+    Navigator.pop(context);
     // if (response != null) {
     //   if (response["success"] == "1") {
         // loginModel = LoginModel.fromJson(response);

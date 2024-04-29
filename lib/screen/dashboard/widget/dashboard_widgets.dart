@@ -291,7 +291,6 @@ class DashboardTodayUserRegisteredWidget extends StatelessWidget {
                       textType: MyTextType.titleMedium,
                       color: Colours().appBarOnBgColor(dark),
                       fontW: FontWeight.w600,
-                      size: 15,
                     ),
                   ),
                   Text(
@@ -300,7 +299,6 @@ class DashboardTodayUserRegisteredWidget extends StatelessWidget {
                       textType: MyTextType.titleMedium,
                       color: Colours().appBarOnBgColor(dark),
                       fontW: FontWeight.w600,
-                      size: 15,
                     ),
                   ),
                 ],
