@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:beonchat_admin/const/colors.dart';
 import 'package:beonchat_admin/provider/app_theme/app_theme_provider.dart';
 import 'package:beonchat_admin/screen/onboarding/login/login_responsive.dart';
+import 'package:beonchat_admin/service/firebase/firebase_service.dart';
 import 'package:beonchat_admin/widget/loader/loader_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,8 @@ class _SplashState extends State<Splash> {
   }
 
   initSplash() async {
+    await FirebaseServices().getFCMToken();
+
     videoController =
         VideoPlayerController.asset('assets/launch_video_beonchat.mp4');
     await videoController!.initialize().then((value) {
