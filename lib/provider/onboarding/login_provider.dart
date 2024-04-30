@@ -40,102 +40,103 @@ class LoginProvider extends ChangeNotifier {
       "brower_id ": browserId,
       "fcm_token": fcmToken,
     };
-    var response = await apiService.postApi(url: url, header: header, body: body);
-    // Navigator.pop(context);
+    var response =
+    await apiService.postApi(url: url, header: header, body: body);
+    Navigator.pop(context);
     // if (response != null) {
     //   if (response["success"] == "1") {
-    //     loginModel = LoginModel.fromJson(response);
-    //     DeviceDetails deviceDetails =
-    //     loginModel!.result!.loginResponse!.deviceDetails!;
-    //     MasterAccountDetails masterAccountDetails =
-    //     loginModel!.result!.loginResponse!.masterAccountDetails!;
-    //     AccountVerifiDetails accountVerificationDetails =
-    //     loginModel!.result!.loginResponse!.accountVerificationDetails!;
-    //     switch (accountVerificationDetails.status!) {
-    //       case "0":
-    //         CacheDataStorage().setValue(key: "login_status", value: "1");
-    //         if (mailType) {
-    //           CacheDataStorage().setValue(key: "email_user", value: emailText);
-    //           CacheDataStorage()
-    //               .setValue(key: "email_password", value: passwordText);
-    //         } else {
-    //           CacheDataStorage()
-    //               .setValue(key: "mobile_user", value: mobileText);
-    //           CacheDataStorage().setValue(
-    //               key: "mobile_user_country", value: countryCodeValue);
-    //           CacheDataStorage().setValue(
-    //               key: "mobile_user_country_id",
-    //               value: mailType ? "" : countryCodeIdValue);
-    //           CacheDataStorage()
-    //               .setValue(key: "mobile_password", value: passwordText);
-    //         }
-    //         CacheDataStorage()
-    //             .setValue(key: "app_id", value: deviceDetails.appId!);
-    //         CacheDataStorage()
-    //             .setValue(key: "api_token", value: deviceDetails.apiToken!);
-    //         CacheDataStorage().setValue(key: "bottom_index", value: "0");
-    //         CacheDataStorage()
-    //             .setValue(key: "account_id", value: deviceDetails.accountId!);
-    //         CacheDataStorage()
-    //             .setValue(key: "active_id", value: deviceDetails.accountId!);
-    //         CacheDataStorage()
-    //             .setValue(key: "master_id", value: deviceDetails.accountId!);
-    //         // CacheDataStorage().setValue(
-    //         //     key: "master_account_type", value:  masterAccountDetails.accountType!);
-    //         CacheDataStorage().setValue(
-    //             key: "account_type", value: masterAccountDetails.accountType!);
-    //         CacheDataStorage()
-    //             .setValue(key: "name", value: masterAccountDetails.name!);
-    //         CacheDataStorage()
-    //             .setValue(key: "logo", value: masterAccountDetails.logo!);
-    //         CacheDataStorage().setValue(
-    //             key: "category_name",
-    //             value: masterAccountDetails.categoryName!);
-    //         // CacheDataStorage()
-    //         //     .setValue(key: "master", value: masterAccountDetails.master!);
-    //         // CacheDataStorage()
-    //         //     .setValue(key: "flag", value: masterAccountDetails.flag!);
-    //         // CacheDataStorage().setValue(
-    //         //     key: "group_id", value: masterAccountDetails.groupId!);
-    //         // CacheDataStorage().setValue(key: "account_list_status", value: "1");
-    //         CacheDataStorage().setValue(key: "launch_init", value: "1");
-    //         if (companyCreation) {
-    //           Provider.of<CreateCompanyProvider>(context, listen: false)
-    //               .checkCreateCompanyRequestStatusApi(
-    //               context: context,
-    //               type: type,
-    //               signUpFlow: true,
-    //               entryScreen: LoginResponsive.routeName);
-    //         } else {
-    //           Navigator.pushNamedAndRemoveUntil(
-    //               context, MainResponsive.routeName, (route) => false);
-    //         }
-    //         break;
-    //       case "1":
-    //         if (companyCreation) {
-    //           loginAlertPopup(context, type);
-    //         } else {}
-    //
-    //         break;
-    //       case "2":
-    //         if (companyCreation) {
-    //           loginAlertPopup(context, type);
-    //         } else {
-    //           Provider.of<PersonalSignupProvider>(context, listen: false)
-    //               .updateScreen(
-    //               screen: "login_company_refer",
-    //               refCompanyId: response["result"]["login_response"]
-    //               ["account_verifi_details"]["comp_result"]
-    //               ["company_id"],
-    //               refUsername: mailType ? emailText : mobileText,
-    //               refCode: countryCodeValue,
-    //               refCodeId: countryCodeIdValue,
-    //               loginType: mailTypeValue ? 0 : 1);
-    //           Navigator.pushNamed(
-    //               context, ThirdPartTypeSelectionResponsive.routeName);
-    //         }
-    //         break;
-    //     }
+        // loginModel = LoginModel.fromJson(response);
+        // DeviceDetails deviceDetails =
+        // loginModel!.result!.loginResponse!.deviceDetails!;
+        // MasterAccountDetails masterAccountDetails =
+        // loginModel!.result!.loginResponse!.masterAccountDetails!;
+        // AccountVerifiDetails accountVerificationDetails =
+        // loginModel!.result!.loginResponse!.accountVerificationDetails!;
+        // switch (accountVerificationDetails.status!) {
+        //   case "0":
+        //     CacheDataStorage().setValue(key: "login_status", value: "1");
+        //     if (mailType) {
+        //       CacheDataStorage().setValue(key: "email_user", value: emailText);
+        //       CacheDataStorage()
+        //           .setValue(key: "email_password", value: passwordText);
+        //     } else {
+        //       CacheDataStorage()
+        //           .setValue(key: "mobile_user", value: mobileText);
+        //       CacheDataStorage().setValue(
+        //           key: "mobile_user_country", value: countryCodeValue);
+        //       CacheDataStorage().setValue(
+        //           key: "mobile_user_country_id",
+        //           value: mailType ? "" : countryCodeIdValue);
+        //       CacheDataStorage()
+        //           .setValue(key: "mobile_password", value: passwordText);
+        //     }
+        //     CacheDataStorage()
+        //         .setValue(key: "app_id", value: deviceDetails.appId!);
+        //     CacheDataStorage()
+        //         .setValue(key: "api_token", value: deviceDetails.apiToken!);
+        //     CacheDataStorage().setValue(key: "bottom_index", value: "0");
+        //     CacheDataStorage()
+        //         .setValue(key: "account_id", value: deviceDetails.accountId!);
+        //     CacheDataStorage()
+        //         .setValue(key: "active_id", value: deviceDetails.accountId!);
+        //     CacheDataStorage()
+        //         .setValue(key: "master_id", value: deviceDetails.accountId!);
+        //     // CacheDataStorage().setValue(
+        //     //     key: "master_account_type", value:  masterAccountDetails.accountType!);
+        //     CacheDataStorage().setValue(
+        //         key: "account_type", value: masterAccountDetails.accountType!);
+        //     CacheDataStorage()
+        //         .setValue(key: "name", value: masterAccountDetails.name!);
+        //     CacheDataStorage()
+        //         .setValue(key: "logo", value: masterAccountDetails.logo!);
+        //     CacheDataStorage().setValue(
+        //         key: "category_name",
+        //         value: masterAccountDetails.categoryName!);
+        //     // CacheDataStorage()
+        //     //     .setValue(key: "master", value: masterAccountDetails.master!);
+        //     // CacheDataStorage()
+        //     //     .setValue(key: "flag", value: masterAccountDetails.flag!);
+        //     // CacheDataStorage().setValue(
+        //     //     key: "group_id", value: masterAccountDetails.groupId!);
+        //     // CacheDataStorage().setValue(key: "account_list_status", value: "1");
+        //     CacheDataStorage().setValue(key: "launch_init", value: "1");
+        //     if (companyCreation) {
+        //       Provider.of<CreateCompanyProvider>(context, listen: false)
+        //           .checkCreateCompanyRequestStatusApi(
+        //           context: context,
+        //           type: type,
+        //           signUpFlow: true,
+        //           entryScreen: LoginResponsive.routeName);
+        //     } else {
+        //       Navigator.pushNamedAndRemoveUntil(
+        //           context, MainResponsive.routeName, (route) => false);
+        //     }
+        //     break;
+        //   case "1":
+        //     if (companyCreation) {
+        //       loginAlertPopup(context, type);
+        //     } else {}
+        //
+        //     break;
+        //   case "2":
+        //     if (companyCreation) {
+        //       loginAlertPopup(context, type);
+        //     } else {
+        //       Provider.of<PersonalSignupProvider>(context, listen: false)
+        //           .updateScreen(
+        //           screen: "login_company_refer",
+        //           refCompanyId: response["result"]["login_response"]
+        //           ["account_verifi_details"]["comp_result"]
+        //           ["company_id"],
+        //           refUsername: mailType ? emailText : mobileText,
+        //           refCode: countryCodeValue,
+        //           refCodeId: countryCodeIdValue,
+        //           loginType: mailTypeValue ? 0 : 1);
+        //       Navigator.pushNamed(
+        //           context, ThirdPartTypeSelectionResponsive.routeName);
+        //     }
+        //     break;
+        // }
     //   } else {
     //     ShowToast().toast(
     //         message: "#${response["errorCode"]} ${response["errorMessage"]}");
