@@ -6,6 +6,7 @@ import 'package:beonchat_admin/provider/onboarding/login_provider.dart';
 import 'package:beonchat_admin/screen/dashboard/dashboard_responsive.dart';
 import 'package:beonchat_admin/service/validator/email_validator.dart';
 import 'package:beonchat_admin/widget/button/button.dart';
+import 'package:beonchat_admin/widget/loader/loader_widget.dart';
 import 'package:beonchat_admin/widget/textfield/textfield.dart';
 import 'package:beonchat_admin/widget/util/my_spacing.dart';
 import 'package:flutter/material.dart';
@@ -40,12 +41,13 @@ class LoginForm extends StatelessWidget {
               type: type,
               inputType: TextInputType.emailAddress,
               hintText: "email",
+              specialChar: true,
               obscure: false,
               validator: (val) {
                 if (val!.isEmpty) {
-                  return "required".tr;
+                  return "";
                 } else if (!val.isValidEmail()) {
-                  return "required".tr;
+                  return "";
                 }
                 return null;
               },
@@ -62,17 +64,19 @@ class LoginForm extends StatelessWidget {
               inputType: TextInputType.text,
               hintText: "password",
               obscure: false,
+              specialChar: true,
               validator: (val) {
                 if (val!.isEmpty) {
-                  return "required".tr;
-                }else if (val.length < 5) {
-                  return "required".tr;
+                  return "";
+                } else if (val.length < 5) {
+                  return "";
                 }
                 return null;
               },
               onChange: (val) {},
               onSubmit: (val) {
-                // todo
+                provider.login(context: context,type: type, emailText: provider.email.text, passwordText: provider.password.text);
+
               },
               textColor: Colours().white,
             ),
@@ -80,19 +84,13 @@ class LoginForm extends StatelessWidget {
             SingleAlertButton(
               type: type,
               callB: () {
-                Provider.of<MainProvider>(context,listen: false).init(context);
-                if(provider.loginFormKey.currentState!.validate()){
-                  provider.login(
-                      context: context,
-                      type: type,
-                      passwordText: provider.password.text,
-                      emailText: provider.email.text,
-                  );
-
-                }
-
+                // Provider.of<MainProvider>(context,listen: false).init(context);
+                provider.login(context: context,type: type, emailText: provider.email.text, passwordText: provider.password.text);
               },
               title: "login",
+              titleWidget: provider.loginLoader
+                  ? Loader().showButtonLoader(type: type)
+                  : null,
               bottomPadding: 0,
               horizontalPadding: 0,
               colour: Colours().primary,

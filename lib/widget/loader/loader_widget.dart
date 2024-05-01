@@ -17,6 +17,14 @@ class Loader {
     );
   }
 
+  showButtonLoader({required int type}) {
+    return Image.asset(
+      "assets/load.gif",
+      color: Colours().white,
+      height: type == 1 ? 25 : 32,
+    );
+  }
+
   showAlertLoader({required BuildContext context, required int type}) {
     return showDialog(
       context: context,
@@ -67,7 +75,11 @@ class AlertLoaderBody extends StatelessWidget {
       backgroundColor: Colours().white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       insetPadding: MySpacing.x(
-        type == 1 ? 40 : w / 5.12,
+        type == 1
+            ? 40
+            : type == 2
+                ? w / 5.12
+                : w / 2.7,
       ),
       child: SingleChildScrollView(
         child: Padding(

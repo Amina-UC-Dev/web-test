@@ -17,6 +17,7 @@ class ButtonWidget {
     required Color color,
     required Color textColor,
     BorderSide? side,
+    Widget? titleWidget,
     FontWeight? fontW,
     double? fontSize,
     double? radius,
@@ -43,15 +44,16 @@ class ButtonWidget {
       onPressed: onTap,
       elevation: all ? 2 : 0,
       color: color,
-      child: Text(
-        title.tr,
-        style: Styles().text(
-          textType: MyTextType.bodyMedium,
-          fontW: fontW ?? FontWeight.w700,
-          color: textColor,
-          size: fontSize ?? (type == 1 ? 16 : 18),
-        ),
-      ),
+      child: titleWidget ??
+          Text(
+            title.tr,
+            style: Styles().text(
+              textType: MyTextType.bodyMedium,
+              fontW: fontW ?? FontWeight.w700,
+              color: textColor,
+              size: fontSize ?? (type == 1 ? 16 : 18),
+            ),
+          ),
     );
   }
 
@@ -101,7 +103,14 @@ class ButtonWidget {
 }
 
 class SingleButton extends StatelessWidget {
-  const SingleButton({Key? key, required this.type, required this.callB, required this.title, this.color, this.textColor, this.fontW})
+  const SingleButton(
+      {Key? key,
+      required this.type,
+      required this.callB,
+      required this.title,
+      this.color,
+      this.textColor,
+      this.fontW})
       : super(key: key);
 
   final int type;
@@ -153,7 +162,8 @@ class SingleAlertButton extends StatelessWidget {
       required this.horizontalPadding,
       this.fontW,
       this.fontSize,
-      this.radius})
+      this.radius,
+      this.titleWidget})
       : super(key: key);
 
   final int type;
@@ -163,6 +173,7 @@ class SingleAlertButton extends StatelessWidget {
   final Color? colour;
   final FontWeight? fontW;
   final double? radius;
+  final Widget? titleWidget;
   final Function() callB;
 
   @override
@@ -190,6 +201,7 @@ class SingleAlertButton extends StatelessWidget {
             fontW: fontW,
             fontSize: fontSize,
             radius: radius,
+            titleWidget: titleWidget,
           ),
         ),
       ),

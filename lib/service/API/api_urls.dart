@@ -1,6 +1,4 @@
-import 'package:beonchat_admin/env/config_reader.dart';
-
 class ApiUrls {
-  String baseUrl = ConfigReader.getBaseUrl();
+  String baseUrl = "https://api_devbackend.beonchat.com/backend/api/";
   String apiToken = "030723553bff7";
 }
