@@ -12,8 +12,8 @@ class LoginProvider extends ChangeNotifier {
   final loginFormKey = GlobalKey<FormState>();
   final FocusNode passwordFocus = FocusNode();
   bool loginLoader = false;
-  TextEditingController email = TextEditingController(text: "shahana@jazenet.com");
-  TextEditingController password = TextEditingController(text: "q1w2e3r4");
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
 
   reset() async {
     email.text = "";
